@@ -1,0 +1,532 @@
+穿戴式上肢外骨骼遥控器
+与双机械臂小车接收机
+系统架构、器件选型、固件设计与开发计划
+设计基线：CH32L103 + CH32H417 + KTH5502 + 6轴IMU + nRF24L01+
+版本：v0.1  |  日期：2026-09-21  |  用途：比赛原型 / 第一版工程开发
+0. 文档范围与设计前提
+本文件把当前方案整理成可以直接进入原理图、PCB、固件框架和联调阶段的开发基线。这里不展开CAN收发器具体器件选型；CAN的物理层器件由后续单独评审。本文件重点覆盖MCU、角度传感器、IMU、系统架构、通信协议、固件任务、运动学、离合/跟随、接收机IK、底盘控制、无线共存、安全和测试。
+1. 总体系统架构
+推荐采用“传感器节点—系统主控—机器人主控”的分层结构。L103只负责本地实时采集与输入；H417负责需要统一坐标系和上下文的工作。这样能够避免把人体坐标系、IMU、离合、无线和机器人IK耦合到分布式节点。
+                    穿戴端 Wearable
+
+   左侧关节区                          右侧关节区
+ KTH×3 -> L103-JL                  KTH×3 -> L103-JR
+                \                  /
+                 \                /
+                  +---- CAN -----+
+                  |              |
+             L103-HL          L103-HR
+             摇杆/按钮          摇杆/按钮
+                  \              /
+                   +---- CAN ---+
+                           |
+                        H417-W
+                 IMU / FK / XYZ / 离合
+                           |
+                         nRF24
+                           ))))
+
+                    2.4 GHz 无线
+                           ((((
+                           |
+                        H417-R
+                 RF接收 / IK / 底盘
+                    /             \
+                 左机械臂          右机械臂
+                    \\           //
+                       底盘控制
+                         |
+                    4 × C620
+2. MCU选型
+本项目的MCU种类收敛为两类：CH32L103与CH32H417。这样既满足成本/BOM简洁，又让主控保留足够的算力和外设余量。
+[S1] WCH/OpenWCH CH32H417资料：双核V5F+V3F、V5F最高400 MHz、896 KB SRAM、960 KB Flash、3路CAN、4路SPI等。
+[S2] WCH CH32L103资料：96 MHz、64 KB Flash、20 KB SRAM、ADC、定时器、2×SPI、4×USART、1×CAN等。
+3. 传感器选型
+[S3] TDK InvenSense ICM-42688-P：6轴、1.71~3.6 V、SPI/I²C/I3C、2 KB FIFO，陀螺/加速度量程可编程。
+[S4] Bosch Sensortec BMI270：面向wearable的6轴IMU，1.7~3.6 V VDD、1.2~3.6 V VDDIO，支持SPI/I²C，陀螺最高6.4 kHz ODR。
+4. KTH5502节点设计
+KTH采集节点的目标是把每侧3个角度传感器做成一个独立、时间一致、故障可诊断的智能节点。中央H417只接收标准化的q1/q2/q3，不需要知道KTH到底是AB还是SPI。
+KTH5502 每颗典型逻辑：
+
+MODE=0  -> AB：A/B -> L103定时器Encoder模式
+MODE=1  -> 数字接口：SPI 3线 / I2C
+
+三线SPI：SCK + DATA(双向) + CS
+SPI Mode 3，最高5 MHz
+
+第一版固件建议：
+1. 上电等待传感器内部初始化完成；
+2. 启动AB输出；
+3. 每1 ms读取/锁存三个定时器计数；
+4. 需要绝对值时，在低速/静止窗口执行数字读取；
+5. 绝对值与AB计数建立新的参考关系；
+6. 回到AB连续跟踪。
+[S5] 用户提供的KTH5502系列数据手册：MODE低=AB正交；MODE高=I²C/SPI；SPI为三线、Mode 3、最高5 MHz；数字角度16 bit；上电初始化期间禁止通信；AB最高1024线/圈的订货型号为KTH5502LVPSP8-AB1024。
+5. 手部L103节点设计
+6. CAN逻辑架构（不指定收发器型号）
+本节只定义总线在系统中的角色和协议层，CAN PHY器件由后续评审。穿戴端建议所有L103与H417-W共用一条CAN逻辑总线；接收端H417-R则利用其多路CAN资源，把底盘、左臂、右臂按子系统隔离。
+穿戴端 CAN：
+
+0x101  左侧关节节点  q1 q2 q3 status seq
+0x102  右侧关节节点  q4 q5 q6 status seq
+0x111  左手输入节点  JoyX JoyY Buttons status seq
+0x112  右手输入节点  JoyX JoyY Buttons status seq
+0x120  H417系统状态    mode link sensor fault ...
+0x121  H417时间/同步    timestamp / sync marker
+
+建议：标准11-bit ID；节点上线后先发送版本/设备类型；
+任何控制数据都带seq或timestamp，H417丢弃旧数据。
+7. 穿戴端H417-W固件架构
+推荐软件模块：
+
+bsp/
+  clock  gpio  dma  timer  can  spi  adc  usb  wdt
+
+hal/
+  kth_node_protocol  imu_driver  nrf24_driver
+
+services/
+  can_manager        rf_manager
+  sensor_health      parameter_store
+  timebase           diagnostics
+
+motion/
+  human_fk           body_frame
+  attitude           clutch_follow
+  limit_filter       command_pack
+
+app/
+  wearable_state_machine
+  safety_state_machine
+  ui (optional)
+8. 接收机H417-R固件架构
+nRF24 RX
+   |
+   v
+Packet Check -> sequence / freshness / mode / safety
+   |
+   +-----------------------------+
+   |                             |
+   v                             v
+Left Hand XYZ                 Right Hand XYZ
+   |                             |
+   v                             v
+Body/Robot Frame Transform   Body/Robot Frame Transform
+   |                             |
+   v                             v
+Scale + Offset + Workspace Limiter
+   |                             |
+   v                             v
+Left Arm IK                    Right Arm IK
+   |                             |
+   v                             v
+Joint Target -> rate limit -> joint controller
+
+Parallel:
+Joystick -> chassis command -> chassis kinematics -> C620
+
+Global safety supervisor monitors RF / IK / joint limits / C620 feedback.
+9. 人体正运动学、坐标系与离合/跟随
+人体侧只有3 DOF/臂，因此首先输出位置XYZ最自然。接收端机械臂结构不同，因此使用笛卡尔空间复现，而不是关节角直接映射。
+人体侧：
+q1, q2, q3  --FK-->  p_hand = [x, y, z]^T (body/shoulder frame)
+
+若考虑身体整体相对机器人方向：
+p_robot_frame = R_body_to_robot * p_body + t_body_to_robot
+
+离合（推荐）：
+进入跟随：记录 p_hand_ref 与 p_robot_ref
+跟随中：
+    p_robot_cmd = p_robot_ref + S * (p_hand - p_hand_ref)
+离合中：保持 p_robot_cmd 不变
+再次接合：更新 p_hand_ref = 当前手位置，p_robot_ref = 当前机器人命令
+然后继续跟随。
+10. 双机械臂IK策略
+接收机应建立一个与具体机械臂驱动无关的“目标关节接口”：上层只产生q_target[i]、dq_limit[i]、mode等，底层再根据实际执行器实现。
+推荐的IK循环：
+
+1. p_des = mapping(hand_xyz)
+2. q_seed = q_prev
+3. solve IK(p_des, q_seed)
+4. check finite / joint limits / workspace
+5. check |dq| and |ddq|
+6. if valid:
+      q_cmd = rate_limited(q_solution)
+   else:
+      q_cmd = previous_safe_cmd
+7. send to low-level joint controller
+11. 接收机底盘控制
+底盘部分不要让上层直接操纵4个电机编号。推荐定义一个抽象的底盘接口：vx、vy（如果机械结构支持横移）、wz。若底盘只有前后+原地旋转，则使用vx、wz。具体四轮运动学由底盘类型决定。
+遥控层：
+Joystick -> vx_cmd, vy_cmd(optional), wz_cmd
+
+底盘层：
+[vx_cmd, vy_cmd, wz_cmd]
+        |
+        +--> wheel_kinematics --> w1,w2,w3,w4
+                                   |
+                                   +--> motor controller
+
+C620反馈：
+ID 0x201~0x204 -> rotor angle / speed / torque current / temperature
+控制：
+ID 0x200 -> 1~4号电调目标电流
+[S6] 用户提供的 RoboMaster C620无刷电机调速器使用说明：CAN控制/反馈格式及4路C620使用方式。
+12. nRF24无线链路与2.4 GHz共存
+场上存在其他2.4 GHz设备时，系统设计不能只依赖“地址不同”。地址只解决报文识别，真正需要处理的是同频/邻频占用、碰撞和重传。无线电只放在H417中央主控，避免左右节点各自形成独立2.4 GHz发射源。
+建议应用层包（32 Bytes以内）：
+
+byte 0   version
+byte 1   packet_type
+byte 2-3 seq
+byte 4-5  X_L
+byte 6-7  Y_L
+byte 8-9  Z_L
+byte 10-11 X_R
+byte 12-13 Y_R
+byte 14-15 Z_R
+byte 16-17 roll
+byte 18-19 pitch
+byte 20-21 yaw_relative
+byte 22-23 joy_Lx
+byte 24-25 joy_Ly
+byte 26-27 joy_Rx
+byte 28-29 joy_Ry
+byte 30    mode
+byte 31    safety/status
+
+nRF24硬件CRC/ACK用于链路层；seq用于应用层新鲜度判断。
+[S7] Nordic nRF24L01 Product Specification v2.0：支持250 kbps/1 Mbps/2 Mbps、1 MHz信道步进、自动ACK和自动重传。
+13. 全系统状态机与安全策略
+BOOT
+  |
+SELF_TEST
+  |-- KTH/IMU/CAN/RF异常 --> FAULT
+  v
+CALIBRATING
+  |
+READY (不允许机器人自由运动)
+  |
+ARMED / DEADMAN
+  |
+FOLLOWING
+  |      \
+  |       CLUTCH
+  |          |
+  +<---------+
+
+任何状态：
+RF timeout / sensor stale / IK no-solution / joint over-limit / watchdog
+        -> SAFE_STOP
+        -> 机器人目标缓停或按执行器特性归零
+        -> 保留故障码与最近一次有效数据
+14. 标定流程
+推荐首次上电标定流程：
+
+1. 所有节点启动 -> CAN注册
+2. KTH节点确认3路传感器在线
+3. 读取/验证绝对角（若此版本启用SPI校准）
+4. 读取IMU并做静止bias采样
+5. 手部摇杆自动中心校准
+6. H417-W等待“人体姿态基准”按钮
+7. 保存当前人体关节/IMU参考
+8. 接收机H417-R做机器人关节零位检查
+9. READY -> 等待Deadman/Follow按键
+15. 固件实现注意事项
+不要在1 kHz实时任务里调用大量printf、动态内存分配或阻塞式延时；调试日志使用环形缓冲区，低频发送。
+所有外部输入都要做单位转换、范围检查和有限数检查（finite）；禁止NaN/Inf进入IK或电机命令。
+CAN/RF接收与算法计算之间采用双缓冲或“latest value”结构，不要让实时任务等待通信。
+KTH AB计数使用硬件定时器；速度计算使用定时采样和时间戳，不用GPIO EXTI逐边沿计数。
+绝对角读取的CRC必须验证；KTH传感器上电初始化窗口内不要提前通信。
+所有参数分版本存储，并加CRC/校验；参数升级失败回退默认值。
+H417第一版先单核；第二核启用前先定义清晰的共享数据结构和核间通信协议。
+不要直接把人体关节角映射给机器人关节；所有机器人控制目标统一经过坐标映射 + IK + 限速。
+无线数据包必须包含seq和mode/safety状态；接收机不能只看“有没有收到包”，还要判断是不是最新包。
+对两个机械臂分别建立“目标位置”和“当前安全目标”的双变量，故障时不能把新目标清零造成突跳。
+16. 建议的代码工程组织
+firmware/
+  common/
+    protocol/          # CAN/RF packet definitions, versioning
+    math/               # vector/matrix/quaternion
+    filters/            # LPF, median, deadzone
+    safety/             # timeout, limit, watchdog policy
+    crc/                # CRC8/CRC16 helpers
+
+  l103_hand/
+    bsp/
+    drivers/adc/ gpio/ can/ wdt/
+    app/hand_input.c
+    app/can_node.c
+
+  l103_joint/
+    bsp/
+    drivers/kth_ab.c
+    drivers/kth_spi.c
+    drivers/can.c
+    app/joint_estimator.c
+    app/calibration.c
+
+  h417_wearable/
+    drivers/imu.c
+    drivers/nrf24.c
+    services/can_manager.c
+    motion/human_fk.c
+    motion/attitude.c
+    motion/clutch.c
+    motion/mapping.c
+    safety/supervisor.c
+    app/wearable.c
+
+  h417_receiver/
+    drivers/nrf24.c
+    drivers/can_chassis.c
+    drivers/can_arm_l/r.c
+    motion/ik_left.c
+    motion/ik_right.c
+    motion/chassis.c
+    safety/supervisor.c
+    app/receiver.c
+17. 开发阶段与里程碑
+18. 重点测试项目
+19. MCU/传感器BOM基线
+20. 冻结前必须确认的事项
+确认KTH5502LVPSP8-AB1024的最终供应商、封装、磁铁规格以及对应料号的完整电气/磁场指标；当前用户提供文件主体是AB256系列资料，订货表列出了AB1024型号，因此不要直接把AB256的全部性能数字无条件套到AB1024上。
+验证L103所选封装的3路Encoder Timer具体引脚复用，形成原理图级pin map；同时确认CAN和调试接口不会产生冲突。
+确定H417MEU6是否能够满足最终穿戴主控和接收机所有I/O需求；若接收机要同时使用3路CAN+多个显示/机械臂接口，再做一次pin mux冻结。
+确认机械臂自由度、关节类型、零位、限位、减速比以及执行器通信接口；这些决定IK模型和H417-R的3路CAN如何分配。
+确认底盘是差速/滑移转向还是全向/麦轮；目前只定义上层vx/vy/wz抽象接口，不假设具体轮型。
+确认比赛无线频谱规则、允许信道和发射功率；据此冻结nRF24信道策略。
+确认是否需要长期绝对Yaw；若不需要，维持6轴IMU+相对Yaw。
+21. 一页式开发速查
+22. 资料依据
+[S1] WCH/OpenWCH CH32H417资料（2026-09-21检索）：https://github.com/openwch/ch32h417
+[S2] WCH CH32L103资料（2026-09-21检索）：https://www.wch-ic.com/products/CH32L103.html
+[S3] TDK InvenSense ICM-42688-P Product Center / Datasheet：https://product.tdk.com/en/search/sensor/mortion-inertial/imu/info?part_no=ICM-42688-P
+[S4] Bosch Sensortec BMI270 Product Page：https://www.bosch-sensortec.com/en/products/motion-sensors/imus/bmi270
+[S5] 用户提供：C54334023_磁性角度传感器_KTH5502HVPSP8-AB256_规格书_WJ1880179.PDF；同时参考昆泰芯微KTH5502系列产品页：https://conntek.com.cn/html/web/product/magneticAngleDetectionChip/kth5502/index.html
+[S6] 用户提供：RoboMaster C620无刷电机调速器使用说明（中英日）V1.01.pdf
+[S7] Nordic nRF24L01 Product Specification V2.0（自动ACK/重传、250 kbps/1 Mbps/2 Mbps、RF channel说明）：https://devzone.nordicsemi.com/cfs-file/__key/communityserver-discussions-components-files/4/content.pdf
+附录A. 参数表模板（建议最终配置化）
+
+本版本的核心结论 / 1) 全系统只保留两类MCU：CH32L103负责分布式采集/手部输入，CH32H417负责高层运动学、姿态、离合、无线以及接收机控制。 / 2) 每侧采用两颗L103：一颗在手部负责摇杆/按钮，一颗在该侧关节附近负责3颗KTH5502。 / 3) KTH节点默认以AB1024为运行时位置反馈，绝对角度SPI保留为初始化/校准/故障恢复手段。 / 4) 手部XYZ由H417统一解算，不在L103上做机器人层面的坐标逻辑。 / 5) 接收机采用H417；左右机械臂采用“笛卡尔目标 + IK”而不是人体关节角一一映射。
+
+
+项目项 | 当前基线 | 备注
+穿戴自由度 | 左右各3 DOF，共6个关节 | 肩：上下+前后；肘：屈伸
+手部输入 | 左右各1个CH32L103 | 摇杆、按钮及后续手部扩展输入
+关节采集 | 左右各1个CH32L103 | 每侧采3颗KTH5502
+中央主控 | CH32H417 | 穿戴端1颗，接收机1颗
+角度反馈 | KTH5502 AB1024为主，SPI绝对角度为校准通道 | AB1024具体SKU电气指标以最终料号datasheet为准
+人体姿态 | 6轴IMU | 不提供长期绝对Yaw；以相对航向为基线
+无线 | nRF24L01+方案 | 单一无线电集中到H417
+接收机 | H417 + 双机械臂 + 四电机底盘 | 底盘控制器使用已提供C620资料
+显示屏 | 第一版非必需 | H417预留接口；是否安装以后由比赛需求决定
+
+
+层级 | 节点 | 核心职责 | 不应该做的事
+传感器层 | 2 × L103-J | 3颗KTH的AB计数、角度重建、SPI绝对校准、速度估算 | 不做人体XYZ、不参与无线任务
+输入层 | 2 × L103-H | 摇杆ADC、按键去抖、手部状态、CAN | 不做机器人IK
+穿戴主控 | H417-W | CAN汇总、IMU姿态、人体FK、手端XYZ、离合、无线 | 不直接操作机械臂执行器
+无线链路 | nRF24L01+ | 可靠传输最新控制状态 | 不承担应用层安全状态机
+机器人主控 | H417-R | 无线解包、坐标转换、双臂IK、关节命令、底盘运动学、安全 | 不把人体关节角直接映射成机器人关节角
+执行层 | C620/机械臂驱动器 | 底盘/机械臂低层闭环 | 上层不绕过安全限制直接输出无限制目标
+
+
+器件 | 推荐封装/型号 | 用途 | 选择理由
+CH32L103 | CH32L103C8T6，LQFP-48 | 4个分布式节点：左/右手输入各1，左/右关节采集各1 | 96 MHz、64 KB Flash、20 KB SRAM；多定时器、ADC、SPI、USART、CAN，足以承担3路AB采集或手部输入
+CH32H417 | CH32H417MEU6，QFN-88；若I/O极紧张再考虑QFN128 | 穿戴主控 + 接收机主控 | 双核、最高400 MHz V5F、160 MHz级V3F、960 KB Flash、896 KB SRAM、3×CAN、4×SPI、LTDC等，适合统一承担运动学、通信与后续UI
+
+
+为什么不把主控换回V303/V407？ / 从“能不能算”来看，V303/V407已经可以完成这个项目；选择H417的理由主要是统一两端主控、接口余量、后续GUI/日志/第二通信链路以及接收机的扩展空间，而不是因为IK/FK本身必须400 MHz。H417第一版甚至可以只启用V5F单核，第二阶段再把通信或GUI迁移到V3F。
+
+
+传感器 | 建议料号 | 安装位置 | 用途 | 结论
+磁性角度传感器 | KTH5502LVPSP8-AB1024（首选） | 每个关节1颗，共6颗 | 三路关节角/增量反馈 | 适合人体关节；1024线/圈在推荐≤1000 RPM条件下有很大余量。最终料号必须再次核对
+6轴IMU | ICM-42688-P（主选） | 穿戴躯干/主控板附近 | 身体相对姿态、相对Yaw、动态补偿 | SPI/I²C/I3C；1.71~3.6 V供电/IO，适合3.3V系统；带2 KB FIFO，性能余量高
+6轴IMU替代 | BMI270 | 同上 | 同上 | 可作为成本/供货替代；针对wearable，功耗非常低；同样支持3.3V级I/O
+
+
+关于“6轴IMU能不能直接给绝对Yaw” / 不能长期稳定地给出绝对Yaw。加速度计可以把Roll/Pitch绑定到重力方向，但Yaw会随陀螺零偏积分而漂移。因此第一版建议把Yaw定义成“进入跟随/重新接合时的相对航向”，允许离合时重置参考。只有比赛需求明确要求长期绝对航向时，才再引入磁力计或其他外部航向参考。
+
+
+项目 | 设计基线 | 固件要求
+运行位置反馈 | AB1024 + 定时器正交计数 | 使用硬件Encoder/Counter，不用GPIO中断逐边沿处理
+采样周期 | 1 kHz作为基础周期 | 每1 ms锁存3路计数、计算角度/速度并更新CAN数据影子区
+角度单位 | 内部推荐Q16.16或0.01°定点 | CAN线上建议0.01°的int16；内部计算保留更高精度
+速度 | Δcount/Δt + 一阶低通 | 高速时避免差分噪声；低速可延长差分窗口
+绝对角 | 三线SPI，Mode 3，最高5 MHz | 封装在sensor driver内；回读后做CRC8/ITU检查
+MODE切换 | 第一版不依赖动态热切换 | 资料明确给出MODE复用，但未给出运行中切换的完整时序；量产前需厂家确认。R1先用AB连续工作，绝对角用于上电/校准/调试
+故障 | 超时/非法状态/磁场异常/通信失败 | 节点状态必须通过CAN上报
+
+
+1024线的实际分辨率 / 若把AB的“1024线/圈”按四倍频计数，则每转约4096个计数，单计数约0.0879°。这是“计数分辨率”，不是传感器绝对精度。你提供的KTH5502系列资料还给出了数字模式16 bit分辨率、AB模式DNL/噪声指标；最终AB1024料号应以对应版本的datasheet为准。
+
+
+模块 | 采样/处理 | 建议频率 | 输出
+摇杆ADC | DMA扫描、零点/满量程校准、死区、低通 | 500~1000 Hz | 标准化int16
+按钮 | GPIO采样 + 软件去抖 + 状态机 | 1 kHz | bitfield
+手部状态 | 在线、低电压、输入异常、固件版本 | 10~100 Hz | 状态帧
+CAN | 周期发送最新状态，不缓存陈旧输入 | 250~500 Hz | 一帧8字节即可覆盖常见输入组合
+
+
+手部L103不要计算XYZ / 手部节点不知道当前人体坐标系、身体姿态、离合参考和机器人缩放参数，因此只上报“输入是什么”。XYZ统一交给H417-W，这样后续修改外骨骼尺寸或映射比例不需要修改手部固件。
+
+
+节点 | ID建议 | 数据 | 更新频率
+左KTH | 0x101 | q1/q2/q3、status、seq | 500 Hz（内部1 kHz采样）
+右KTH | 0x102 | q4/q5/q6、status、seq | 500 Hz
+左手 | 0x111 | JoyX/JoyY/buttons/status/seq | 250~500 Hz
+右手 | 0x112 | 同上 | 250~500 Hz
+
+
+节点时间一致性 / 不要求所有L103共用同一个硬件时钟，但必须在H417-W做“新鲜度”判断。推荐每个输入/关节节点都带seq，H417记录最近更新时间；超过阈值就把该数据标为stale，而不是继续使用最后一次数据却不知情。
+
+
+任务 | 周期 | 职责 | 优先级
+Sensor/CAN Rx | 中断+事件驱动 | 接收四个L103节点，更新双缓冲 | 高
+IMU采集 | 500~1000 Hz | 读取FIFO/数据寄存器、时间戳、校准 | 高
+Human FK | 500~1000 Hz | q1~q6 -> 两手pXYZ | 高
+Attitude | 200~500 Hz | IMU姿态/相对航向、滤波 | 高
+Clutch/Follow | 200~500 Hz | 离合、重新接合、缩放/偏置 | 高
+RF Tx | 100~250 Hz | 打包最新命令、序号、状态 | 高
+Diagnostics | 10~100 Hz | 传感器在线率、RSSI/丢包、错误码、统计 | 中
+UI（以后） | 10~60 Hz | 小屏或调试接口 | 低
+
+
+双核怎么用？ / 第一版建议只让V5F跑全部业务，把V3F保持为后续扩展。等单核版本稳定后，再考虑把CAN/RF/UI/日志搬到V3F。不要在第一版就把算法拆成跨核共享内存，否则会同时引入核间同步、内存可见性与调试复杂度。
+
+
+任务 | 周期 | 核心工作
+RF接收 | 中断+事件 | 收到最新包，检查硬件CRC结果、seq、模式
+IK | 200~500 Hz | 两个机械臂独立求解，必要时考虑双臂碰撞/耦合
+关节目标生成 | 500 Hz或更高 | 角度/速度/加速度限制、目标平滑
+底盘控制 | 100~1000 Hz | 输入命令到四轮目标/电流命令
+C620反馈处理 | 事件/周期 | 读取角度、速度、实际电流、温度并诊断
+Safety Supervisor | 1 kHz级 | 通信超时、无解、过限、节点故障时进入安全状态
+
+
+参数 | 初版建议 | 说明
+位置缩放S | 默认1.0，软件可调 | 可按比赛空间限制调到0.3~1.0等
+手部死区 | 2~10 mm范围试验 | 避免IMU/角度噪声导致机器人抖动
+离合按键 | 手部保留一个专用按钮 | 优先设计成“按住才允许动作”的安全Deadman，再叠加Toggle模式
+接合策略 | 重新定义参考点，不改变机器人当前目标 | 避免重新接合时机器人跳变
+人体坐标系 | 固定定义肩/躯干坐标轴 | 后续所有FK、IMU、标定都必须遵守同一约定
+
+
+为什么IK优于“按比例映射关节角” / 人体肩部/肘部三关节与机器人机械臂的关节轴、长度、零位、限位一般不相同。直接关节映射会把人体结构缺陷带到机器人结构里。Cartesian + IK允许机器人按照自身结构寻找最合适的关节组合，并可加入关节限位、速度限制、避奇异和“最接近上一时刻姿态”的代价函数。
+
+
+IK模块 | 实现建议 | 关键约束
+模型 | 先建立DH或POE模型 | 每个关节零位、正方向、长度、安装偏置必须实测
+解算方式 | 若结构简单优先解析IK；否则采用数值IK | 数值法推荐Damped Least Squares / Jacobian
+初值 | 上一周期关节角 q_prev | 目标是连续运动而不是每次从默认姿态重解
+代价 | min ||q-q_prev||_W + λ||pose_error|| | W可用于限制某些关节变化
+限位 | 求解前后都检查 | 硬限位/软件限位双层处理
+无解 | 保持上一安全目标，必要时缓慢回安全位 | 绝不能把NaN/越界角直接发送到执行器
+奇异点 | 监控Jacobian条件数或DLS阻尼 | 接近奇异点时降低速度/增大阻尼
+双臂 | 先独立IK，再做双臂工作空间/碰撞检查 | 必要时加入共享约束
+
+
+C620资料中的关键事实 / 你提供的C620说明书规定：0x200可同时控制1~4号电调，控制量范围-16384~+16384，对应-20~+20 A；反馈ID为0x200+电调ID，例如1号为0x201。反馈包含机械角0~8191、转速rpm、实际转矩电流和温度，默认发送频率1 kHz。建议H417-R在软件上把这些原始字段再包装成统一的MotorState。
+
+
+项 | 建议基线 | 原因
+无线节点数 | 穿戴端1个TX、接收机1个RX | 集中处理时序/重传/安全更容易
+速率 | 先测试1 Mbps；若距离不足再评估250 kbps | 1 Mbps单包空口时间更短，适合较拥挤环境；250 kbps灵敏度更有余量但占空时间更长
+更新率 | 100~200 Hz控制包为第一版目标 | 人体动作不需要1 kHz空口更新；留出重传和干扰余量
+应用序号 | 16-bit seq | 丢包/重传后可以识别旧包
+失败策略 | 超过超时阈值进入安全状态，同时扫描/切换备用信道 | 不要无限重传旧命令
+信道策略 | 开机扫描候选信道，保存主/备信道 | 比赛现场需要应对其他无线设备
+功率 | 从能稳定工作的较低功率开始 | 并非功率越高越好；近距离高功率会增加占频
+
+
+故障 | 检测 | 动作
+无线超时 | 最后有效包时间 | 停止更新机器人运动目标；底盘/关节控制器进入安全输出
+关节节点掉线 | CAN heartbeat/seq超时 | 对应手臂禁止继续自由跟随；可保持当前安全位或停止
+IMU异常 | 数据率/WHO_AM_I/范围/时间戳 | 禁止需要姿态变换的模式；退回简化映射或安全状态
+IK无解 | 迭代失败/越限/NaN | 保持上次安全目标，不发送非法值
+C620反馈异常 | 角度/温度/通信状态 | 按电机故障策略降级或停止
+MCU任务卡死 | 独立看门狗 + task watchdog | 复位后进入FAULT，不自动恢复运动
+按钮卡死/摇杆异常 | ADC stuck-at /范围检查 | 忽略异常输入，状态上报
+
+
+强烈建议加入Deadman / 为了比赛和人体佩戴安全，建议至少预留一个“按住才允许机器人动作”的按钮。Toggle离合可以保留，但它不应承担唯一的安全功能。无线掉线、传感器异常、H417复位后，都应该默认不输出运动。
+
+
+阶段 | 标定内容 | 保存位置
+KTH传感器 | 磁铁安装高度、中心偏差、零位、方向正负 | L103节点Flash参数区
+人体关节 | 每个关节机械零位与角度符号 | L103或H417参数区；建议H417统一管理配置
+人体尺寸 | 上臂/前臂长度、肩部偏置、手端零点 | H417-W参数区
+IMU | bias、轴向、安装旋转矩阵 | H417-W参数区
+摇杆 | 中心、端点、死区、正负方向 | 对应手部L103
+机器人 | 每个关节零位、方向、限位、减速比 | H417-R参数区
+IK | DH/POE参数、权重、阻尼 | H417-R Flash
+
+
+阶段 | 目标 | 验收标准
+P0 MCU基础 | L103/H417最小工程、下载、WCH-Link调试、时钟/WDG | 5种板卡/节点均能稳定运行24h
+P1 KTH单节点 | 单颗KTH AB计数 + SPI读取 + CRC | 角度/方向/计数稳定，能记录原始数据
+P2 三路KTH节点 | 一颗L103同时管理3路KTH | 三路同步采样、速度正确、异常可检测
+P3 手部节点 | 摇杆/按键 + CAN | 输入无明显抖动；掉线可检测
+P4 穿戴H417 | CAN + IMU + FK + XYZ | PC日志可看到两手XYZ连续变化
+P5 离合 | Follow/Clutch/重新接合 | 接合/脱离不产生目标跳变
+P6 RF | nRF24稳定双向链路 | 丢包、重传、换频、超时安全均可复现
+P7 接收机IK | 机器人模型 + 单臂IK | 手部移动可平滑映射到单臂，越限不失控
+P8 双臂+底盘 | 双IK + 底盘控制 + C620反馈 | 三者可同时工作且无明显任务阻塞
+P9 比赛工程化 | 异常注入/长时间测试/线束/EMI | 完成故障矩阵与比赛前冻结
+
+
+测试 | 方法 | 通过标准
+KTH计数 | 低速/高速往返、跨0°/360°连续旋转 | 不丢计数、不乱方向
+KTH绝对校准 | AB运行中在静止窗口读取绝对角并重建参考 | 校准后无明显角度跳变
+长线 | 实际线束最大长度+最大弯折次数 | 无误码/无偶发错误
+CAN负载 | 所有节点同时发送 | 无不可接受的丢帧/延迟，节点故障可检测
+IMU静止 | 静止10分钟 | roll/pitch稳定，yaw漂移有记录且符合预期
+离合 | 快速连续按键、不同姿势重新接合 | 机器人命令不发生跳变
+IK无解 | 把目标推到工作空间外 | 机器人保持安全目标，不出现NaN/突跳
+RF干扰 | 多设备同时2.4GHz工作 | 丢包时进入重传/换频/安全流程
+断电/复位 | 断开任一L103/H417/RF | 机器人不会保持危险的旧命令继续运动
+C620异常 | 模拟通信丢失/过温/反馈异常 | 底盘进入定义好的安全状态
+
+
+器件类别 | 推荐器件 | 数量 | 用途 | 备注
+MCU | CH32L103C8T6 LQFP-48 | 4 | 2×手部输入 + 2×关节采集 | 同一料号覆盖两个节点类型
+MCU | CH32H417MEU6 QFN-88 | 2 | 穿戴主控 + 接收机主控 | 第一版可先单核使用；QFN128仅在I/O确实不足时上
+角度传感器 | KTH5502LVPSP8-AB1024 | 6 | 左右臂3+3关节 | 推荐用于AB运行时；最终量产料号核对
+IMU | ICM-42688-P | 1 | 穿戴躯干姿态 | 主选
+IMU替代 | BMI270 | 0/1 | 备选 | 根据价格/供货/驱动熟悉度替换
+
+
+显示屏当前处理 / 第一版不把屏幕列入必需BOM。H417已经为未来GUI留出资源；建议PCB预留一个小型SPI屏接口和安装位，但不让屏幕参与运动控制闭环。比赛现场如果需要“模式/链路/电量/故障码”显示，再在第二版加入。
+
+
+问题 | 直接答案
+手部XYZ谁算？ | H417-W算。L103只给输入，KTH L103只给q1~q3。
+每侧几颗L103？ | 2颗：1颗手部输入 + 1颗三路KTH采集。左右共4颗。
+主控用什么？ | CH32H417；穿戴端和接收机各1颗。
+KTH怎么读？ | AB1024运行时硬件计数；SPI绝对角作为校准/初始化手段。三线SPI，Mode 3。
+IMU选什么？ | ICM-42688-P主选；BMI270作替代。
+机械臂怎么跟随？ | 人体XYZ -> 坐标变换 -> 缩放/限幅 -> 机械臂IK -> 关节目标。
+离合怎么做？ | 冻结机器人目标；重新接合时重置人体参考点，避免跳变。
+2.4G怎么布置？ | 穿戴端只留1个nRF24，挂在H417-W；接收机同样1个。
+屏幕要不要？ | 第一版不需要；预留接口即可。
+CAN器件怎么选？ | 本文件不指定收发器型号，按后续CAN专项设计评审。
+
+
+参数组 | 参数 | 示例 | 备注
+KTH | counts_per_rev | 4096（AB1024四倍频） | 不要把此数写死，需支持配置
+KTH | angle_zero[6] | 每关节独立 | Flash保存
+KTH | direction[6] | +1/-1 | 机械装配方向
+人体 | upper_arm_length | 按实测mm | FK参数
+人体 | forearm_length | 按实测mm | FK参数
+人体 | hand_offset | 按结构 | FK参数
+映射 | scale_xyz | 1.0 | 离合/跟随参数
+映射 | deadband_mm | 5 | 避免抖动
+安全 | rf_timeout_ms | 50~100（待实测/比赛规则确认） | 超时动作必须冻结
+安全 | sensor_timeout_ms | 10~20 | CAN节点新鲜度
+安全 | max_dq | 按机械臂关节 | IK后限速
+RF | channel_primary | 待现场频谱测试 | 禁止拍脑袋固定
+RF | packet_rate_hz | 100~200 | 与无线重传策略联合验证
+
+
+开发顺序建议 / 不要一开始就把“人体FK + IMU + nRF24 + 双臂IK + C620”全部同时调。先把“3路KTH -> L103 -> CAN”和“手部L103 -> CAN”分别做成两个可靠节点，再让H417-W生成XYZ日志；随后单独验证离合；最后才接入无线和机器人IK。这样出现问题时可以明确定位在传感器、总线、FK、RF还是机器人侧。
