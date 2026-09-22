@@ -1,49 +1,63 @@
-穿戴式上肢外骨骼遥控器
-与双机械臂小车接收机
+穿戴式上肢外骨骼遥控器 与 双机械臂小车接收机
 系统架构、器件选型、固件设计与开发计划
+
 设计基线：CH32L103 + CH32H417 + KTH5502 + 6轴IMU + nRF24L01+
-版本：v0.1  |  日期：2026-09-21  |  用途：比赛原型 / 第一版工程开发
+版本：v1.0  |  日期：2026-09-22  |  用途：比赛原型 / 第一版工程开发
+
+
 0. 文档范围与设计前提
-本文件把当前方案整理成可以直接进入原理图、PCB、固件框架和联调阶段的开发基线。这里不展开CAN收发器具体器件选型；CAN的物理层器件由后续单独评审。本文件重点覆盖MCU、角度传感器、IMU、系统架构、通信协议、固件任务、运动学、离合/跟随、接收机IK、底盘控制、无线共存、安全和测试。
+本文件把当前方案整理成可以直接进入原理图、PCB、固件框架和联调阶段的开发基线。
+本文件重点覆盖MCU、角度传感器、IMU、系统架构、通信协议、固件任务、运动学、离合/跟随、接收机IK、底盘控制、无线共存、安全和测试。
+
+
 1. 总体系统架构
-推荐采用“传感器节点—系统主控—机器人主控”的分层结构。L103只负责本地实时采集与输入；H417负责需要统一坐标系和上下文的工作。这样能够避免把人体坐标系、IMU、离合、无线和机器人IK耦合到分布式节点。
+采用“传感器节点—系统主控—机器人主控”的分层结构。
+L103只负责本地实时采集与输入；H417负责需要统一坐标系和上下文的工作；避免把人体坐标系、IMU、离合、无线和机器人IK耦合到分布式节点。
+
+
                     穿戴端 Wearable
 
-   左侧关节区                          右侧关节区
- KTH×3 -> L103-JL                  KTH×3 -> L103-JR
-                \                  /
-                 \                /
-                  +---- CAN -----+
-                  |              |
-             L103-HL          L103-HR
-             摇杆/按钮          摇杆/按钮
-                  \              /
-                   +---- CAN ---+
+     左侧关节区                          右侧关节区
+  KTH×3 -> L103-JL                  KTH×3 -> L103-JR
+                 \                  /
+                  \                /
+                   +---- CAN -----+
+                   |              |
+               L103-HL          L103-HR
+              摇杆/按钮          摇杆/按钮
+                   \              /
+                    +---- CAN ---+
                            |
                         H417-W
                  IMU / FK / XYZ / 离合
                            |
                          nRF24
-                           ))))
+                          ))))
 
-                    2.4 GHz 无线
-                           ((((
+                      2.4 GHz 无线
+                          ((((
                            |
-                        H417-R
-                 RF接收 / IK / 底盘
+                         H417-R
+                   RF接收 / IK / 底盘
                     /             \
                  左机械臂          右机械臂
                     \\           //
-                       底盘控制
-                         |
-                    4 × C620
+                        底盘控制
+                           |
+                        4 × C620
+
+
 2. MCU选型
 本项目的MCU种类收敛为两类：CH32L103与CH32H417。这样既满足成本/BOM简洁，又让主控保留足够的算力和外设余量。
 [S1] WCH/OpenWCH CH32H417资料：双核V5F+V3F、V5F最高400 MHz、896 KB SRAM、960 KB Flash、3路CAN、4路SPI等。
 [S2] WCH CH32L103资料：96 MHz、64 KB Flash、20 KB SRAM、ADC、定时器、2×SPI、4×USART、1×CAN等。
+
+
 3. 传感器选型
 [S3] TDK InvenSense ICM-42688-P：6轴、1.71~3.6 V、SPI/I²C/I3C、2 KB FIFO，陀螺/加速度量程可编程。
 [S4] Bosch Sensortec BMI270：面向wearable的6轴IMU，1.7~3.6 V VDD、1.2~3.6 V VDDIO，支持SPI/I²C，陀螺最高6.4 kHz ODR。
+
+
 4. KTH5502节点设计
 KTH采集节点的目标是把每侧3个角度传感器做成一个独立、时间一致、故障可诊断的智能节点。中央H417只接收标准化的q1/q2/q3，不需要知道KTH到底是AB还是SPI。
 KTH5502 每颗典型逻辑：
@@ -63,6 +77,8 @@ SPI Mode 3，最高5 MHz
 6. 回到AB连续跟踪。
 [S5] 用户提供的KTH5502系列数据手册：MODE低=AB正交；MODE高=I²C/SPI；SPI为三线、Mode 3、最高5 MHz；数字角度16 bit；上电初始化期间禁止通信；AB最高1024线/圈的订货型号为KTH5502LVPSP8-AB1024。
 5. 手部L103节点设计
+
+
 6. CAN逻辑架构（不指定收发器型号）
 本节只定义总线在系统中的角色和协议层，CAN PHY器件由后续评审。穿戴端建议所有L103与H417-W共用一条CAN逻辑总线；接收端H417-R则利用其多路CAN资源，把底盘、左臂、右臂按子系统隔离。
 穿戴端 CAN：
@@ -76,6 +92,8 @@ SPI Mode 3，最高5 MHz
 
 建议：标准11-bit ID；节点上线后先发送版本/设备类型；
 任何控制数据都带seq或timestamp，H417丢弃旧数据。
+
+
 7. 穿戴端H417-W固件架构
 推荐软件模块：
 
@@ -99,6 +117,8 @@ app/
   wearable_state_machine
   safety_state_machine
   ui (optional)
+
+
 8. 接收机H417-R固件架构
 nRF24 RX
    |
@@ -126,6 +146,8 @@ Parallel:
 Joystick -> chassis command -> chassis kinematics -> C620
 
 Global safety supervisor monitors RF / IK / joint limits / C620 feedback.
+
+
 9. 人体正运动学、坐标系与离合/跟随
 人体侧只有3 DOF/臂，因此首先输出位置XYZ最自然。接收端机械臂结构不同，因此使用笛卡尔空间复现，而不是关节角直接映射。
 人体侧：
@@ -141,20 +163,24 @@ p_robot_frame = R_body_to_robot * p_body + t_body_to_robot
 离合中：保持 p_robot_cmd 不变
 再次接合：更新 p_hand_ref = 当前手位置，p_robot_ref = 当前机器人命令
 然后继续跟随。
+
+
 10. 双机械臂IK策略
 接收机应建立一个与具体机械臂驱动无关的“目标关节接口”：上层只产生q_target[i]、dq_limit[i]、mode等，底层再根据实际执行器实现。
 推荐的IK循环：
 
-1. p_des = mapping(hand_xyz)
-2. q_seed = q_prev
-3. solve IK(p_des, q_seed)
-4. check finite / joint limits / workspace
-5. check |dq| and |ddq|
-6. if valid:
-      q_cmd = rate_limited(q_solution)
-   else:
-      q_cmd = previous_safe_cmd
-7. send to low-level joint controller
+  1. p_des = mapping(hand_xyz)
+  2. q_seed = q_prev
+  3. solve IK(p_des, q_seed)
+  4. check finite / joint limits / workspace
+  5. check |dq| and |ddq|
+  6. if valid:
+        q_cmd = rate_limited(q_solution)
+     else:
+        q_cmd = previous_safe_cmd
+  7. send to low-level joint controller
+
+
 11. 接收机底盘控制
 底盘部分不要让上层直接操纵4个电机编号。推荐定义一个抽象的底盘接口：vx、vy（如果机械结构支持横移）、wz。若底盘只有前后+原地旋转，则使用vx、wz。具体四轮运动学由底盘类型决定。
 遥控层：
@@ -172,6 +198,8 @@ ID 0x201~0x204 -> rotor angle / speed / torque current / temperature
 控制：
 ID 0x200 -> 1~4号电调目标电流
 [S6] 用户提供的 RoboMaster C620无刷电机调速器使用说明：CAN控制/反馈格式及4路C620使用方式。
+
+
 12. nRF24无线链路与2.4 GHz共存
 场上存在其他2.4 GHz设备时，系统设计不能只依赖“地址不同”。地址只解决报文识别，真正需要处理的是同频/邻频占用、碰撞和重传。无线电只放在H417中央主控，避免左右节点各自形成独立2.4 GHz发射源。
 建议应用层包（32 Bytes以内）：
@@ -197,6 +225,8 @@ byte 31    safety/status
 
 nRF24硬件CRC/ACK用于链路层；seq用于应用层新鲜度判断。
 [S7] Nordic nRF24L01 Product Specification v2.0：支持250 kbps/1 Mbps/2 Mbps、1 MHz信道步进、自动ACK和自动重传。
+
+
 13. 全系统状态机与安全策略
 BOOT
   |
@@ -220,6 +250,8 @@ RF timeout / sensor stale / IK no-solution / joint over-limit / watchdog
         -> SAFE_STOP
         -> 机器人目标缓停或按执行器特性归零
         -> 保留故障码与最近一次有效数据
+
+
 14. 标定流程
 推荐首次上电标定流程：
 
@@ -243,6 +275,8 @@ H417第一版先单核；第二核启用前先定义清晰的共享数据结构�
 不要直接把人体关节角映射给机器人关节；所有机器人控制目标统一经过坐标映射 + IK + 限速。
 无线数据包必须包含seq和mode/safety状态；接收机不能只看“有没有收到包”，还要判断是不是最新包。
 对两个机械臂分别建立“目标位置”和“当前安全目标”的双变量，故障时不能把新目标清零造成突跳。
+
+
 16. 建议的代码工程组织
 firmware/
   common/
@@ -287,8 +321,14 @@ firmware/
     safety/supervisor.c
     app/receiver.c
 17. 开发阶段与里程碑
+
+
 18. 重点测试项目
+
+
 19. MCU/传感器BOM基线
+
+
 20. 冻结前必须确认的事项
 确认KTH5502LVPSP8-AB1024的最终供应商、封装、磁铁规格以及对应料号的完整电气/磁场指标；当前用户提供文件主体是AB256系列资料，订货表列出了AB1024型号，因此不要直接把AB256的全部性能数字无条件套到AB1024上。
 验证L103所选封装的3路Encoder Timer具体引脚复用，形成原理图级pin map；同时确认CAN和调试接口不会产生冲突。
@@ -392,8 +432,6 @@ RF Tx | 100~250 Hz | 打包最新命令、序号、状态 | 高
 Diagnostics | 10~100 Hz | 传感器在线率、RSSI/丢包、错误码、统计 | 中
 UI（以后） | 10~60 Hz | 小屏或调试接口 | 低
 
-
-双核怎么用？ / 第一版建议只让V5F跑全部业务，把V3F保持为后续扩展。等单核版本稳定后，再考虑把CAN/RF/UI/日志搬到V3F。不要在第一版就把算法拆成跨核共享内存，否则会同时引入核间同步、内存可见性与调试复杂度。
 
 
 任务 | 周期 | 核心工作
@@ -529,4 +567,4 @@ RF | channel_primary | 待现场频谱测试 | 禁止拍脑袋固定
 RF | packet_rate_hz | 100~200 | 与无线重传策略联合验证
 
 
-开发顺序建议 / 不要一开始就把“人体FK + IMU + nRF24 + 双臂IK + C620”全部同时调。先把“3路KTH -> L103 -> CAN”和“手部L103 -> CAN”分别做成两个可靠节点，再让H417-W生成XYZ日志；随后单独验证离合；最后才接入无线和机器人IK。这样出现问题时可以明确定位在传感器、总线、FK、RF还是机器人侧。
+开发顺序建议 / 懒得写了bb
