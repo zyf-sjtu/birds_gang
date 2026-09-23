@@ -1,0 +1,260 @@
+{
+  "uuid": "4d03e26951dcc7de383fcf4fddeb0a67",
+  "path": "Offline/%E7%8E%AF%E5%A4%AA%E5%B9%B3%E6%B4%8B-%E5%85%B3%E8%8A%82%E8%A7%92%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8",
+  "name": "环太平洋-关节角度传感器",
+  "content": "",
+  "created_at": "2026-09-22 11:03:08",
+  "updated_at": "2026-09-22 23:01:01",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "9a0f8219cc5a333e59c85c0831a0e98c",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "d4e5e293dec94900a3d933ed8b16ba2f": 1,
+        "bb009484ef804a24ac5d18c54b249586": 6,
+        "24eeb2ceca08480b92b847b6a310acda": 3,
+        "3d621d338e7a4b55a39051df3a1a454b": 1,
+        "a4eacdcb63554cb08b3b56477817ab57": 1,
+        "93f8c397ee3149a782b962e55155f609": 1,
+        "5cbe824183374fac8e4c1ae848199ce3": 2
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "0.1u",
+          2,
+          "C0603",
+          "C1,C3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10u",
+          1,
+          "C0603",
+          "C2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "HCZZ0323-8",
+          1,
+          "ZH1.5-8P卧贴",
+          "CN1",
+          {
+            "Manufacturer Part": "HCZZ0323-8",
+            "Manufacturer": "HC(虹成电子)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7433564"
+          }
+        ],
+        [
+          "SMF3.3A",
+          1,
+          "SMA",
+          "D4",
+          {
+            "Manufacturer Part": "SMF3.3A",
+            "Manufacturer": "R+O(宏嘉诚)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C51891832"
+          }
+        ],
+        [
+          "1m",
+          1,
+          "L0603",
+          "L1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "LED-0603_R",
+          2,
+          "0603 贴片LED",
+          "LED1,LED2",
+          {
+            "Manufacturer Part": "19-217/R6C-AL1M2VY/3T",
+            "Manufacturer": "EVERLIGHT(台湾亿光)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C72044"
+          }
+        ],
+        [
+          "33",
+          3,
+          "R0603",
+          "R1,R2,R4",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10",
+          1,
+          "R0603",
+          "R3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7k",
+          2,
+          "R0603",
+          "R5,R6",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "KTH5502LVPSP8-AB1024",
+          1,
+          "SOP-8(小焊盘)",
+          "U1",
+          {
+            "Manufacturer Part": "KTH5502LVPSP8-AB1024",
+            "Manufacturer": "CONNTEK(昆泰芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C54334024"
+          }
+        ]
+      ],
+      "updateTime": 1790089261,
+      "createTime": 1790046189,
+      "histories": [],
+      "created_at": "2026-09-22 11:03:09",
+      "updated_at": "2026-09-22 23:01:01"
+    },
+    {
+      "uuid": "098b79dcde959158d2ee5c1a7f1e226a",
+      "puuid": "4d03e26951dcc7de383fcf4fddeb0a67",
+      "title": "PCB_环太平洋-关节角度传感器",
+      "filename": "PCB_环太平洋-关节角度传感器.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "42004dc776134802befb86a81beed9fb": 1,
+        "94845f975b474120af7ff5ac9295e0b9": 1,
+        "f5182537515a49e4ab57707f68af5f17": 3,
+        "13a69d8eaf7547fe87fba9c4e3022a65": 6,
+        "553a180d8ff84cd6a96b7f97d3269366": 1,
+        "7abee0fd1b5745d784cf8535da8a72a9": 2,
+        "35bd587ff2de4b4b80914eb73123f125": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "0.1u",
+          3,
+          "C0603",
+          "C1,C2,C3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "HCZZ0323-8",
+          1,
+          "CONN-SMD_8P-P1.5_HCZZ0323-8",
+          "CN1",
+          {
+            "Manufacturer Part": "HCZZ0323-8",
+            "Manufacturer": "HC(虹成电子)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7433564"
+          }
+        ],
+        [
+          "33",
+          2,
+          "R0603",
+          "R1,R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10",
+          1,
+          "R0603",
+          "R3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "KTH5502LVPSP8-AB1024",
+          1,
+          "SOP-8_L5.0-W4.0-P1.27-LS6.0-BL",
+          "U1",
+          {
+            "Manufacturer Part": "KTH5502LVPSP8-AB1024",
+            "Manufacturer": "CONNTEK(昆泰芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C54334024"
+          }
+        ]
+      ],
+      "updateTime": 1790087646,
+      "createTime": 1790057686,
+      "histories": [],
+      "created_at": "2026-09-22 14:14:46",
+      "updated_at": "2026-09-22 22:34:06"
+    }
+  ],
+  "sort": [],
+  "title": "环太平洋-关节角度传感器",
+  "foldername": "环太平洋-关节角度传感器",
+  "schfilename": "环太平洋-关节角度传感器.json",
+  "schfilemtime": 1790089261772
+}

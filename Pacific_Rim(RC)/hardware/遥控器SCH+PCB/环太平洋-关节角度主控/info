@@ -1,0 +1,377 @@
+{
+  "uuid": "05c569b4c167ab617de25f6bc12c4bad",
+  "path": "Offline/%E7%8E%AF%E5%A4%AA%E5%B9%B3%E6%B4%8B-%E5%85%B3%E8%8A%82%E8%A7%92%E5%BA%A6%E4%B8%BB%E6%8E%A7",
+  "name": "环太平洋-关节角度主控",
+  "content": "",
+  "created_at": "2026-09-22 16:05:04",
+  "updated_at": "2026-09-22 23:11:38",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "1e62d9087dce692125b40766cc26734b",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "90f56f924a7a4ff182e86de1b40eb394": 1,
+        "2a9c536731ed43c8ab3a04ac77ad9adc": 1,
+        "bb009484ef804a24ac5d18c54b249586": 13,
+        "24eeb2ceca08480b92b847b6a310acda": 13,
+        "3d621d338e7a4b55a39051df3a1a454b": 3,
+        "072609bc36ec4de9afa31342e50758fe": 1,
+        "e7ed5923062d4266924a2138d24186e1": 2,
+        "7a072ad1b16749c3bba51177e9c61c87": 1,
+        "81b5ab0122c44c65972ab472c89f11fd": 1,
+        "07c257c32f2f40c2b3235ec661daba26": 2,
+        "93f8c397ee3149a782b962e55155f609": 2
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "12p",
+          2,
+          "C0402",
+          "C1,C2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10u",
+          2,
+          "C0805",
+          "C3,C5",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          2,
+          "C0603",
+          "C4,C10",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7u",
+          3,
+          "C0603",
+          "C6,C12,C13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10n",
+          3,
+          "C0402",
+          "C7,C8,C9",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1u",
+          1,
+          "C0402",
+          "C11",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "HCZZ0323-8",
+          3,
+          "ZH1.5-8P卧贴",
+          "CN1,CN2,CN3",
+          {
+            "Manufacturer Part": "HCZZ0323-8",
+            "Manufacturer": "HC(虹成电子)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7433564"
+          }
+        ],
+        [
+          "HC-SH1.0-5PLT",
+          1,
+          "SH1.0-5P卧贴",
+          "CN5",
+          {
+            "Manufacturer Part": "HC-SH1.0-5PLT",
+            "Manufacturer": "HC(虹成电子)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C53454630"
+          }
+        ],
+        [
+          "HCZZ0451-4",
+          2,
+          "PH2.0-4P卧贴",
+          "CN6,CN7",
+          {
+            "Manufacturer Part": "HCZZ0451-4",
+            "Manufacturer": "HC(虹成电子)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7433650"
+          }
+        ],
+        [
+          "SMF5.0A",
+          2,
+          "SOD-323 贴片二极管",
+          "D1,D4",
+          {
+            "Manufacturer Part": "SMF3.3A",
+            "Manufacturer": "R+O(宏嘉诚)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C51891832"
+          }
+        ],
+        [
+          "10k",
+          3,
+          "R0402",
+          "R1,R12,R13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7k",
+          4,
+          "R0402",
+          "R2,R3,R4,R5",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "100",
+          6,
+          "R0402",
+          "R6,R7,R8,R9,R10,R11",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "CH32L103K8U6",
+          1,
+          "QFN-32",
+          "U1",
+          {
+            "Manufacturer Part": "CH32L103K8U6",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22472334"
+          }
+        ],
+        [
+          "XL1057GT/3",
+          1,
+          "SOP-8(小焊盘)",
+          "U2",
+          {
+            "Manufacturer Part": "XL1057GT/3",
+            "Manufacturer": "XINLUDA(信路达)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42379153"
+          }
+        ],
+        [
+          "ME6211A33",
+          1,
+          "SOT-23大焊盘",
+          "U3",
+          {
+            "Manufacturer Part": "ME6211A33M3G-N",
+            "Manufacturer": "MICRONE(南京微盟)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C168807"
+          }
+        ],
+        [
+          "PESD2CAN-ES",
+          2,
+          "SOT-23大焊盘",
+          "U4,U5",
+          {
+            "Manufacturer Part": "PESD2CAN-ES",
+            "Manufacturer": "ElecSuper(静芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5180299"
+          }
+        ],
+        [
+          "8MHz",
+          1,
+          "X3225",
+          "X1",
+          {
+            "Manufacturer Part": "XL2EL89COI-KPIYLC-8M",
+            "Manufacturer": "YXC(扬兴晶振)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42400162"
+          }
+        ]
+      ],
+      "updateTime": 1790089898,
+      "createTime": 1790064305,
+      "histories": [],
+      "created_at": "2026-09-22 16:05:05",
+      "updated_at": "2026-09-22 23:11:38"
+    },
+    {
+      "uuid": "a399580289555128cffaf6f5b428532f",
+      "puuid": "05c569b4c167ab617de25f6bc12c4bad",
+      "title": "PCB_环太平洋-关节角度主控",
+      "filename": "PCB_环太平洋-关节角度主控.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "17cebc86049941109816c67e8adf013c": 7,
+        "3b2a9c8f606f493b8577f8cde29dbcc8": 13,
+        "94845f975b474120af7ff5ac9295e0b9": 3,
+        "50e93f6620c64924a20d3542121d20f9": 1,
+        "42004dc776134802befb86a81beed9fb": 1,
+        "b62b97d15a2f49ceabc25c4a12ddda09": 2,
+        "1eda4a18494f497291e4e99220795973": 3,
+        "8e76f2c30d3b4514a1f2f696fcf4101e": 1,
+        "d1d104de715246d8afa318346fd4a2ca": 2,
+        "f5182537515a49e4ab57707f68af5f17": 4,
+        "7acfd277c83840868831602929e2c3a6": 2,
+        "bf4a62febcbe4f78ba83c838f4fcdde3": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "0.1u",
+          2,
+          "C0603",
+          "C1,C2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "HCZZ0323-8",
+          3,
+          "ZH1.5-8P卧贴",
+          "CN1,CN2,CN3",
+          {
+            "Manufacturer Part": "HCZZ0323-8",
+            "Manufacturer": "HC(虹成电子)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7433564"
+          }
+        ],
+        [
+          "10k",
+          1,
+          "R0603",
+          "R1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7k",
+          1,
+          "R0603",
+          "R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "CH32L103K8U6",
+          1,
+          "QFN-32_L4.0-W4.0-P0.40-BL-EP2.7-A",
+          "U1",
+          {
+            "Manufacturer Part": "CH32L103K8U6",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22472334"
+          }
+        ],
+        [
+          "8MHz",
+          1,
+          "X3225",
+          "X1",
+          {
+            "Manufacturer Part": "XL2EL89COI-KPIYLC-8M",
+            "Manufacturer": "YXC(扬兴晶振)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42400162"
+          }
+        ]
+      ],
+      "updateTime": 1790089832,
+      "createTime": 1790067312,
+      "histories": [],
+      "created_at": "2026-09-22 16:55:12",
+      "updated_at": "2026-09-22 23:10:32"
+    }
+  ],
+  "sort": [],
+  "title": "环太平洋-关节角度主控",
+  "foldername": "环太平洋-关节角度主控",
+  "schfilename": "环太平洋-关节角度主控.json",
+  "schfilemtime": 1790089898021
+}
