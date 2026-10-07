@@ -1,0 +1,695 @@
+{
+  "uuid": "276e8957fb48687138c7000d09d4dae6",
+  "path": "Offline/%E7%8E%AF%E5%A4%AA%E5%B9%B3%E6%B4%8B-%E9%81%A5%E6%8E%A7%E5%99%A8%E4%B8%BB%E6%8E%A7%E5%88%B6%E5%99%A8",
+  "name": "环太平洋-遥控器主控制器",
+  "content": "",
+  "created_at": "2026-09-27 19:00:05",
+  "updated_at": "2026-09-28 13:24:02",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "4c78163f62aae6fe27dee8182f1c9ca0",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "b7cf74987e1a4b9b9dd2e74e56d6dd5a": 1,
+        "7f6d0efe5e811d00ba4310f7938d7c29": 1,
+        "24eeb2ceca08480b92b847b6a310acda": 38,
+        "a8e5bcbf03054061b1e878ba107c5c95": 1,
+        "a4eacdcb63554cb08b3b56477817ab57": 2,
+        "d6f3a4b0bba0432aa3507977687f7de3": 1,
+        "f0953728d35048e2b073dafc65d2386f": 1,
+        "e7ed5923062d4266924a2138d24186e1": 2,
+        "07c257c32f2f40c2b3235ec661daba26": 2,
+        "93f8c397ee3149a782b962e55155f609": 2,
+        "072609bc36ec4de9afa31342e50758fe": 2,
+        "3081ff2201614badb706b24c45e65cb6": 1,
+        "bb009484ef804a24ac5d18c54b249586": 12,
+        "5cbe824183374fac8e4c1ae848199ce3": 4,
+        "527fa3fe8dda43979d08cee25d1c2032": 1,
+        "5c1036b53a4146e4841df4ed0a9de8f0": 4,
+        "dac8e780a41c412e94fadb43a81d65bc": 1,
+        "e545f26e87c74952857381bd0bff848e": 4
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "12p",
+          2,
+          "C0402",
+          "C1,C2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          1,
+          "C0402",
+          "C3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1u",
+          28,
+          "C0402",
+          "C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,L2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "22u",
+          12,
+          "C0603",
+          "C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C42",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "ZX-XH2.54-2PWT",
+          1,
+          "PH2.0-2P卧贴",
+          "CN1",
+          {
+            "Manufacturer Part": "ZX-XH2.54-2PWT",
+            "Manufacturer": "Megastar(兆星)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7429671"
+          }
+        ],
+        [
+          "HCZZ0451-4",
+          2,
+          "PH2.0-4P卧贴",
+          "CN6,CN7",
+          {
+            "Manufacturer Part": "HCZZ0451-4",
+            "Manufacturer": "HC(虹成电子)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7433650"
+          }
+        ],
+        [
+          "SMF5.0A",
+          2,
+          "SOD-323 贴片二极管",
+          "D1,D4",
+          {
+            "Manufacturer Part": "SMF3.3A",
+            "Manufacturer": "R+O(宏嘉诚)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C51891832"
+          }
+        ],
+        [
+          "HDR-F-2.54_2x4",
+          1,
+          "HDR-F-2.54_2X4",
+          "H1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "LCSC",
+            "Supplier Part": "C239344"
+          }
+        ],
+        [
+          "K2-3.6×6.1_SMD",
+          4,
+          "轻触3*4",
+          "KEY2,KEY3,KEY4,KEY5",
+          {
+            "Manufacturer Part": "K2-1107ST-A4SW-06",
+            "Manufacturer": "",
+            "Supplier": "LCSC",
+            "Supplier Part": "C118141"
+          }
+        ],
+        [
+          "1m",
+          1,
+          "L0402",
+          "L1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "LED-0603_R",
+          4,
+          "0603 贴片LED",
+          "LED1,LED2,LED3,LED4",
+          {
+            "Manufacturer Part": "19-217/R6C-AL1M2VY/3T",
+            "Manufacturer": "EVERLIGHT(台湾亿光)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C72044"
+          }
+        ],
+        [
+          "1k",
+          4,
+          "R0603",
+          "R1,R6,R7,R8",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.5R",
+          1,
+          "R0603",
+          "R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10R",
+          1,
+          "R0603",
+          "R3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "5.1k",
+          2,
+          "R0402",
+          "R4,R5",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "120",
+          2,
+          "1206贴片电阻",
+          "R9,R10",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10k",
+          2,
+          "R0402",
+          "R12,R13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "CH32H417WEU6",
+          1,
+          "QFN-68_L8.0-W8.0-P0.40-TL-EP5.8",
+          "U1",
+          {
+            "Manufacturer Part": "CH32H417WEU6",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C52196060"
+          }
+        ],
+        [
+          "ICM-42670-L",
+          1,
+          "LGA-14_L3.0-W2.5-P0.50-TL",
+          "U2",
+          {
+            "Manufacturer Part": "ICM-42670-L",
+            "Manufacturer": "TDK InvenSense(应美盛)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C49073546"
+          }
+        ],
+        [
+          "IP5306-LC",
+          1,
+          "ESOP-8",
+          "U3",
+          {
+            "Manufacturer Part": "IP5306-LC",
+            "Manufacturer": "INJOINIC(英集芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C605440"
+          }
+        ],
+        [
+          "PESD2CAN-ES",
+          2,
+          "SOT-23大焊盘",
+          "U4,U5",
+          {
+            "Manufacturer Part": "PESD2CAN-ES",
+            "Manufacturer": "ElecSuper(静芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5180299"
+          }
+        ],
+        [
+          "XL1057GT/3",
+          2,
+          "SOP-8(小焊盘)",
+          "U6,U7",
+          {
+            "Manufacturer Part": "XL1057GT/3",
+            "Manufacturer": "XINLUDA(信路达)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42379153"
+          }
+        ],
+        [
+          "ME6118A33B3G",
+          1,
+          "SOT-223",
+          "U8",
+          {
+            "Manufacturer Part": "ME6118A33B3G",
+            "Manufacturer": "MICRONE(南京微盟)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C151063"
+          }
+        ],
+        [
+          "LCK-TCF833-L50WL-G1",
+          1,
+          "TYPE-C立贴（矮）",
+          "USB1",
+          {
+            "Manufacturer Part": "LCK-TCF833-L50WL-G1",
+            "Manufacturer": "LCKELEC(联晟欣)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C54950857"
+          }
+        ],
+        [
+          "25MHz",
+          1,
+          "X3225",
+          "X1",
+          {
+            "Manufacturer Part": "X322525MOB4SI",
+            "Manufacturer": "YXC(扬兴晶振)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C9006"
+          }
+        ]
+      ],
+      "updateTime": 1790562219,
+      "createTime": 1790506805,
+      "histories": [],
+      "created_at": "2026-09-27 19:00:05",
+      "updated_at": "2026-09-28 10:23:39"
+    },
+    {
+      "uuid": "fadff666c4cbdb63038b442e23e574d9",
+      "puuid": "276e8957fb48687138c7000d09d4dae6",
+      "title": "PCB_环太平洋-遥控器主控制器",
+      "filename": "PCB_环太平洋-遥控器主控制器.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "31ed58ef9e15436886218390490a87d8": 1,
+        "7bbb72e351d547d0ad7796b6ecc4aff1": 1,
+        "253417f9c8d54cf0894ef378394641cc": 1,
+        "17cebc86049941109816c67e8adf013c": 17,
+        "9563249627664d5fa1838b8fdf9c72a5": 1,
+        "c7327eb7793a4cf58a3c887d4b8ffbf5": 1,
+        "50e93f6620c64924a20d3542121d20f9": 1,
+        "b62b97d15a2f49ceabc25c4a12ddda09": 2,
+        "7acfd277c83840868831602929e2c3a6": 2,
+        "1eda4a18494f497291e4e99220795973": 2,
+        "42004dc776134802befb86a81beed9fb": 2,
+        "92b99b5631a04834a2709c9d7d1cd282": 8,
+        "3b2a9c8f606f493b8577f8cde29dbcc8": 4,
+        "bfe3a7f8ace1441daed81036cc13d924": 1,
+        "a0d308bc86294199b70190405282a5bf": 1,
+        "7abee0fd1b5745d784cf8535da8a72a9": 4,
+        "f5182537515a49e4ab57707f68af5f17": 13,
+        "13a69d8eaf7547fe87fba9c4e3022a65": 6,
+        "f027807cc8b54811b59883eb731df8b3": 4,
+        "32e29b7f370349489c3a18c02c055b52": 1,
+        "3bdb66e9d86442169a6348b9d62b9071": 4,
+        "7c958abcb1ab48298d4bd6a1cb4e45d5": 1,
+        "35083a1f19e9407f8bc5c81dfe99009a": 2
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "HDR-F-2.54_2x4",
+          1,
+          "HDR-F-2.54_2X4",
+          "H1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "LCSC",
+            "Supplier Part": "C239344"
+          }
+        ],
+        [
+          "CH32H417WEU6",
+          1,
+          "QFN-68_L8.0-W8.0-P0.40-TL-EP5.8",
+          "U1",
+          {
+            "Manufacturer Part": "CH32H417WEU6",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C52196060"
+          }
+        ],
+        [
+          "ICM-42670-L",
+          1,
+          "LGA-14_L3.0-W2.5-P0.50-TL",
+          "U2",
+          {
+            "Manufacturer Part": "ICM-42670-L",
+            "Manufacturer": "TDK InvenSense(应美盛)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C49073546"
+          }
+        ],
+        [
+          "12p",
+          2,
+          "C0402",
+          "C1,C2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          1,
+          "C0402",
+          "C3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1u",
+          14,
+          "C0402",
+          "C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "IP5306-LC",
+          1,
+          "ESOP-8",
+          "U3",
+          {
+            "Manufacturer Part": "IP5306-LC",
+            "Manufacturer": "INJOINIC(英集芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C605440"
+          }
+        ],
+        [
+          "1m",
+          1,
+          "L0402",
+          "L1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "25MHz",
+          1,
+          "X3225",
+          "X1",
+          {
+            "Manufacturer Part": "X322525MOB4SI",
+            "Manufacturer": "YXC(扬兴晶振)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C9006"
+          }
+        ],
+        [
+          "HCZZ0451-4",
+          2,
+          "PH2.0-4P卧贴",
+          "CN6,CN7",
+          {
+            "Manufacturer Part": "HCZZ0451-4",
+            "Manufacturer": "HC(虹成电子)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7433650"
+          }
+        ],
+        [
+          "SMF5.0A",
+          2,
+          "SOD-323 贴片二极管",
+          "D1,D4",
+          {
+            "Manufacturer Part": "SMF3.3A",
+            "Manufacturer": "R+O(宏嘉诚)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C51891832"
+          }
+        ],
+        [
+          "PESD2CAN-ES",
+          2,
+          "SOT-23大焊盘",
+          "U4,U5",
+          {
+            "Manufacturer Part": "PESD2CAN-ES",
+            "Manufacturer": "ElecSuper(静芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5180299"
+          }
+        ],
+        [
+          "XL1057GT/3",
+          2,
+          "SOP-8(小焊盘)",
+          "U6,U7",
+          {
+            "Manufacturer Part": "XL1057GT/3",
+            "Manufacturer": "XINLUDA(信路达)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42379153"
+          }
+        ],
+        [
+          "22u",
+          2,
+          "C0603",
+          "C18,C26",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "22u",
+          7,
+          "C1206",
+          "C19,C20,C21,C22,C23,C24,C25",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "K4-12×12_TH",
+          2,
+          "6X6-4P贴片轻触开关",
+          "KEY1,KEY2",
+          {
+            "Manufacturer Part": "K2-1103DP-M4SW-04",
+            "Manufacturer": "韩国韩荣",
+            "Supplier": "LCSC",
+            "Supplier Part": "C128053"
+          }
+        ],
+        [
+          "1u",
+          1,
+          "L0603",
+          "L2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "LED-0603_R",
+          4,
+          "LED0603_RED",
+          "LED1,LED2,LED3,LED4",
+          {
+            "Manufacturer Part": "19-217/R6C-AL1M2VY/3T",
+            "Manufacturer": "EVERLIGHT(台湾亿光)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C72044"
+          }
+        ],
+        [
+          "1k",
+          1,
+          "R0603",
+          "R1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.5R",
+          1,
+          "R0603",
+          "R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10R",
+          1,
+          "R0603",
+          "R3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "5.1k",
+          2,
+          "R0603",
+          "R4,R5",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10k",
+          2,
+          "R0402",
+          "R12,R13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "LCK-TCF833-L50WL-G1",
+          1,
+          "TYPE-C立贴（矮）",
+          "USB1",
+          {
+            "Manufacturer Part": "LCK-TCF833-L50WL-G1",
+            "Manufacturer": "LCKELEC(联晟欣)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C54950857"
+          }
+        ]
+      ],
+      "updateTime": 1790573042,
+      "createTime": 1790509564,
+      "histories": [],
+      "created_at": "2026-09-27 19:46:04",
+      "updated_at": "2026-09-28 13:24:02"
+    }
+  ],
+  "sort": [],
+  "title": "环太平洋-遥控器主控制器",
+  "foldername": "环太平洋-遥控器主控制器",
+  "schfilename": "环太平洋-遥控器主控制器.json",
+  "schfilemtime": 1790562219219
+}

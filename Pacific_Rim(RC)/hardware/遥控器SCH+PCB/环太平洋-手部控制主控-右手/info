@@ -1,0 +1,601 @@
+{
+  "uuid": "83e0ea3b8ffdf1a6610bf2e1f73f3fd5",
+  "path": "Offline/环太平洋-手部控制主控-右手",
+  "name": "环太平洋-手部控制主控-右手",
+  "content": "",
+  "created_at": "2026-10-07 16:22:09",
+  "updated_at": "2026-10-07 16:22:48",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "ac8d9513a88482c28b17f3571a61f0c5",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "24eeb2ceca08480b92b847b6a310acda": 19,
+        "bb009484ef804a24ac5d18c54b249586": 15,
+        "2a9c536731ed43c8ab3a04ac77ad9adc": 1,
+        "90f56f924a7a4ff182e86de1b40eb394": 1,
+        "b7c77aeb9d2b4011a03c9752a8bede89": 1,
+        "18479f1c4d4749c5a4c4387846c5d657": 4,
+        "b15b066106fb4d168dd7bc712566bc1b": 4,
+        "93f8c397ee3149a782b962e55155f609": 1,
+        "07c257c32f2f40c2b3235ec661daba26": 1,
+        "072609bc36ec4de9afa31342e50758fe": 1,
+        "7a072ad1b16749c3bba51177e9c61c87": 1,
+        "3081ff2201614badb706b24c45e65cb6": 1,
+        "fd4f8c72cf544257ae1607df2298e95c": 1,
+        "979497eceefa4146b0f1d73ccf40dd4f": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "12p",
+          2,
+          "C0402",
+          "C1,C2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10u",
+          2,
+          "C0805",
+          "C3,C5",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          13,
+          "C0603",
+          "C4,C6,C7,C8,C9,C10,C11,C14,C15,C16,C17,C18,C19",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7u",
+          2,
+          "C0603",
+          "C12,C13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "WAFER-PH2.0-4PLB",
+          1,
+          "PH2.0-4P立贴",
+          "CN2",
+          {
+            "Manufacturer Part": "WAFER-PH2.0-4PLB",
+            "Manufacturer": "XUNPU(讯普)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C3029433"
+          }
+        ],
+        [
+          "SMF5.0A",
+          1,
+          "SOD-323 贴片二极管",
+          "D4",
+          {
+            "Manufacturer Part": "SMF3.3A",
+            "Manufacturer": "R+O(宏嘉诚)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C51891832"
+          }
+        ],
+        [
+          "K4-6×6_TH",
+          4,
+          "6X6-4P贴片轻触开关",
+          "KEY1,KEY2,KEY3,KEY4",
+          {
+            "Manufacturer Part": "K2-1102DP-E4SW-04",
+            "Manufacturer": "韩国韩荣",
+            "Supplier": "LCSC",
+            "Supplier Part": "C136684"
+          }
+        ],
+        [
+          "XL-1615",
+          4,
+          "WS2812-1615-4P",
+          "LED1,LED2,LED3,LED4",
+          {
+            "Manufacturer Part": "XL-1615RGBC-2812B",
+            "Manufacturer": "XINGLIGHT(成兴光)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5349954"
+          }
+        ],
+        [
+          "10k",
+          3,
+          "R0402",
+          "R1,R5,R6",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7k",
+          1,
+          "R0402",
+          "R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "120",
+          1,
+          "1206贴片电阻",
+          "R3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1k",
+          10,
+          "R0402",
+          "R4,R7,R8,R9,R10,R11,R12,R13,R14,R15",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "PSP平推四向摇杆",
+          1,
+          "PSP平推四向摇杆-贴片",
+          "RN1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "CH32L103K8U6",
+          1,
+          "QFN-32",
+          "U1",
+          {
+            "Manufacturer Part": "CH32L103K8U6",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22472334"
+          }
+        ],
+        [
+          "XL1057GT/3",
+          1,
+          "SOP-8(小焊盘)",
+          "U2",
+          {
+            "Manufacturer Part": "XL1057GT/3",
+            "Manufacturer": "XINLUDA(信路达)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42379153"
+          }
+        ],
+        [
+          "ME6211A33",
+          1,
+          "SOT-23大焊盘",
+          "U3",
+          {
+            "Manufacturer Part": "ME6211A33M3G-N",
+            "Manufacturer": "MICRONE(南京微盟)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C168807"
+          }
+        ],
+        [
+          "PESD2CAN-ES",
+          1,
+          "SOT-23大焊盘",
+          "U4",
+          {
+            "Manufacturer Part": "PESD2CAN-ES",
+            "Manufacturer": "ElecSuper(静芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5180299"
+          }
+        ],
+        [
+          "WAFER-PH2.0-2PLB",
+          1,
+          "PH2.0-2P立贴",
+          "U5",
+          {
+            "Manufacturer Part": "WAFER-PH2.0-2PLB",
+            "Manufacturer": "XUNPU(讯普)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C3029431"
+          }
+        ],
+        [
+          "LCK-TCF833-L50WL-G1",
+          1,
+          "TYPE-C立贴（矮）",
+          "USB1",
+          {
+            "Manufacturer Part": "LCK-TCF833-L50WL-G1",
+            "Manufacturer": "LCKELEC(联晟欣)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C54950857"
+          }
+        ],
+        [
+          "8MHz",
+          1,
+          "X3225",
+          "X1",
+          {
+            "Manufacturer Part": "XL2EL89COI-KPIYLC-8M",
+            "Manufacturer": "YXC(扬兴晶振)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42400162"
+          }
+        ]
+      ],
+      "updateTime": 1791361330,
+      "createTime": 1791361330,
+      "histories": [],
+      "created_at": "2026-10-07 16:22:10",
+      "updated_at": "2026-10-07 16:22:10"
+    },
+    {
+      "uuid": "c74397f21b5d65aa7c58b520d129aeeb",
+      "puuid": "83e0ea3b8ffdf1a6610bf2e1f73f3fd5",
+      "title": "1-PCB_环太平洋-手部控制主控-右手镜像",
+      "filename": "1-PCB_环太平洋-手部控制主控-右手镜像.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "94b07eb0d08a4debbe664490f35e521e": 4,
+        "17cebc86049941109816c67e8adf013c": 10,
+        "35083a1f19e9407f8bc5c81dfe99009a": 1,
+        "0d0254d5a39f497c850ddc4b6bf2bad0": 4,
+        "315fcfa138f243d5b40c5aa28570a18e": 1,
+        "cc80e084e1814668bd344090c3eced3b": 4,
+        "3b2a9c8f606f493b8577f8cde29dbcc8": 14,
+        "fa726ee99b154d339ac36de3ac1ced06": 1,
+        "bf4a62febcbe4f78ba83c838f4fcdde3": 1,
+        "50e93f6620c64924a20d3542121d20f9": 1,
+        "d1d104de715246d8afa318346fd4a2ca": 2,
+        "f5182537515a49e4ab57707f68af5f17": 3,
+        "7acfd277c83840868831602929e2c3a6": 1,
+        "42004dc776134802befb86a81beed9fb": 1,
+        "1eda4a18494f497291e4e99220795973": 2,
+        "bfe3a7f8ace1441daed81036cc13d924": 1,
+        "ad565fef79f34c2dbd6563a2c59e7d71": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "0.1u",
+          4,
+          "C0603（短封装）",
+          "C7,C8,C9,C14",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          8,
+          "C0402",
+          "C6,C17,C18,C19,C15,C16,C10,C11",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "120",
+          1,
+          "1206贴片电阻",
+          "R3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "XL-1615",
+          4,
+          "WS2812-1615-4P",
+          "LED1,LED2,LED3,LED4",
+          {
+            "Manufacturer Part": "XL-1615RGBC-2812B",
+            "Manufacturer": "XINGLIGHT(成兴光)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5349954"
+          }
+        ],
+        [
+          "PSP平推四向摇杆",
+          1,
+          "PSP平推四向摇杆-贴片",
+          "RN1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "K4-6×6_TH",
+          4,
+          "6X6-4P贴片轻触开关",
+          "KEY1,KEY2,KEY3,KEY4",
+          {
+            "Manufacturer Part": "K2-1102DP-E4SW-04",
+            "Manufacturer": "韩国韩荣",
+            "Supplier": "LCSC",
+            "Supplier Part": "C136684"
+          }
+        ],
+        [
+          "1k",
+          10,
+          "R0402",
+          "R15,R4,R7,R8,R9,R10,R11,R12,R13,R14",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "WAFER-PH2.0-4PLB",
+          1,
+          "PH2.0-4P立贴",
+          "CN2",
+          {
+            "Manufacturer Part": "WAFER-PH2.0-4PLB",
+            "Manufacturer": "XUNPU(讯普)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C3029433"
+          }
+        ],
+        [
+          "12p",
+          2,
+          "C0402",
+          "C1,C2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10k",
+          3,
+          "R0402",
+          "R1,R5,R6",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7k",
+          1,
+          "R0402",
+          "R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "CH32L103K8U6",
+          1,
+          "QFN-32",
+          "U1",
+          {
+            "Manufacturer Part": "CH32L103K8U6",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C22472334"
+          }
+        ],
+        [
+          "8MHz",
+          1,
+          "X3225",
+          "X1",
+          {
+            "Manufacturer Part": "XL2EL89COI-KPIYLC-8M",
+            "Manufacturer": "YXC(扬兴晶振)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42400162"
+          }
+        ],
+        [
+          "10u",
+          2,
+          "C0805",
+          "C3,C5",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          1,
+          "C0603",
+          "C4",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7u",
+          2,
+          "C0603",
+          "C12,C13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "SMF5.0A",
+          1,
+          "SOD-323 贴片二极管",
+          "D4",
+          {
+            "Manufacturer Part": "SMF3.3A",
+            "Manufacturer": "R+O(宏嘉诚)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C51891832"
+          }
+        ],
+        [
+          "XL1057GT/3",
+          1,
+          "SOP-8(小焊盘)",
+          "U2",
+          {
+            "Manufacturer Part": "XL1057GT/3",
+            "Manufacturer": "XINLUDA(信路达)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42379153"
+          }
+        ],
+        [
+          "ME6211A33",
+          1,
+          "SOT-23大焊盘",
+          "U3",
+          {
+            "Manufacturer Part": "ME6211A33M3G-N",
+            "Manufacturer": "MICRONE(南京微盟)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C168807"
+          }
+        ],
+        [
+          "PESD2CAN-ES",
+          1,
+          "SOT-23大焊盘",
+          "U4",
+          {
+            "Manufacturer Part": "PESD2CAN-ES",
+            "Manufacturer": "ElecSuper(静芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5180299"
+          }
+        ],
+        [
+          "LCK-TCF833-L50WL-G1",
+          1,
+          "TYPE-C立贴（矮）",
+          "USB1",
+          {
+            "Manufacturer Part": "LCK-TCF833-L50WL-G1",
+            "Manufacturer": "LCKELEC(联晟欣)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C54950857"
+          }
+        ],
+        [
+          "WAFER-PH2.0-2PLB",
+          1,
+          "PH2.0-2P立贴",
+          "U5",
+          {
+            "Manufacturer Part": "WAFER-PH2.0-2PLB",
+            "Manufacturer": "XUNPU(讯普)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C3029431"
+          }
+        ]
+      ],
+      "updateTime": 1791361368,
+      "createTime": 1791361368,
+      "histories": [],
+      "created_at": "2026-10-07 16:22:48",
+      "updated_at": "2026-10-07 16:22:48"
+    }
+  ],
+  "sort": [],
+  "title": "环太平洋-手部控制主控-右手",
+  "foldername": "环太平洋-手部控制主控-右手",
+  "schfilename": "环太平洋-手部控制主控-右手.json",
+  "schfilemtime": 1791361330050
+}
