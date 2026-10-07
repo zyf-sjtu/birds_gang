@@ -1,0 +1,597 @@
+{
+  "uuid": "0c357f874b983490c3601da46f1ecd40",
+  "path": "Offline/%E7%8E%AF%E5%A4%AA%E5%B9%B3%E6%B4%8B-%E6%8E%A5%E6%94%B6%E6%9C%BA%E7%94%B5%E6%BA%90%E6%9D%BF",
+  "name": "环太平洋-接收机电源板",
+  "content": "",
+  "created_at": "2026-10-07 08:23:33",
+  "updated_at": "2026-10-07 14:28:19",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "b2d4a9ca2be93b90d622a29bae9aa943",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "e545f26e87c74952857381bd0bff848e": 20,
+        "24eeb2ceca08480b92b847b6a310acda": 11,
+        "6d1444624d4b4388837c774e32c35da2": 1,
+        "8fc54ec6dadb4abba9f257dbcb08e919": 1,
+        "bb009484ef804a24ac5d18c54b249586": 11,
+        "d26d61ddb4764d5aa18a43cf5926f0a0": 1,
+        "11131175aa064a939ef63a64806dd177": 2,
+        "996db2b9fb424c369c74368ebe3944d6": 1,
+        "a4eacdcb63554cb08b3b56477817ab57": 2,
+        "6b68fb7d13894bb8b675f4673eb7602f": 2,
+        "5cbe824183374fac8e4c1ae848199ce3": 4,
+        "2445f4d868d44c6eb12fa7953c0bf0cb": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "1u",
+          19,
+          "立式电容8X8MM",
+          "C1,C2,C3,C4,C6,C7,C8,C9,C10,C11,C17,C18,C19,C20,C21,C22,C23,C30,C32",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          10,
+          "C0805",
+          "C5,C12,C13,C14,C15,C16,C27,C28,C29,C33",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "100u",
+          3,
+          "立式电容8X8MM",
+          "C24,C25,C31",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7u",
+          1,
+          "C0603",
+          "C26",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "SMCJ30AQ",
+          1,
+          "SMC",
+          "D2",
+          {
+            "Manufacturer Part": "SMCJ33AQ",
+            "Manufacturer": "YANGJIE(扬杰)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5861922"
+          }
+        ],
+        [
+          "SMCJ10A",
+          1,
+          "SMC",
+          "D3",
+          {
+            "Manufacturer Part": "SMCJ33AQ",
+            "Manufacturer": "YANGJIE(扬杰)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5861922"
+          }
+        ],
+        [
+          "6.8uh",
+          1,
+          "0530一体成型贴片电感",
+          "L2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10uh",
+          1,
+          "1770一体成型",
+          "L3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "LED-0603_R",
+          4,
+          "0603 贴片LED",
+          "LED1,LED2,LED3,LED4",
+          {
+            "Manufacturer Part": "19-217/R6C-AL1M2VY/3T",
+            "Manufacturer": "EVERLIGHT(台湾亿光)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C72044"
+          }
+        ],
+        [
+          "100k",
+          2,
+          "R0402",
+          "R1,R3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "25k",
+          1,
+          "R0402",
+          "R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1k",
+          4,
+          "R0603",
+          "R4,R5,R12,R13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7",
+          1,
+          "R0603",
+          "R6",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10k",
+          1,
+          "R0603",
+          "R7",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "72k",
+          1,
+          "R0603",
+          "R8",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "13mR",
+          2,
+          "R2512",
+          "R9,R11",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "200k",
+          1,
+          "R0603",
+          "R10",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "AMS1086CD-3.3",
+          1,
+          "TO-252-2 小",
+          "U1",
+          {
+            "Manufacturer Part": "AMS1086CD-3.3",
+            "Manufacturer": "Advanced Monolithic Systems",
+            "Supplier": "LCSC",
+            "Supplier Part": "C14241"
+          }
+        ],
+        [
+          "NDP2435KC",
+          1,
+          "SOP-8(小焊盘)",
+          "U4",
+          {
+            "Manufacturer Part": "NDP2435KC",
+            "Manufacturer": "NDP(芯潭微)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7420593"
+          }
+        ],
+        [
+          "NDP1480QB",
+          1,
+          "QFN-20-NDP1460",
+          "U5",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ]
+      ],
+      "updateTime": 1791332614,
+      "createTime": 1791332614,
+      "histories": [],
+      "created_at": "2026-10-07 08:23:34",
+      "updated_at": "2026-10-07 08:23:34"
+    },
+    {
+      "uuid": "50605ac435bee58ab7456fbee737e494",
+      "puuid": "0c357f874b983490c3601da46f1ecd40",
+      "title": "1-PCB_环太平洋-接收机电源板",
+      "filename": "1-PCB_环太平洋-接收机电源板.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "deeb73830e474608af3c79558694cae4": 22,
+        "17cebc86049941109816c67e8adf013c": 2,
+        "f5182537515a49e4ab57707f68af5f17": 4,
+        "a0d308bc86294199b70190405282a5bf": 1,
+        "3f42f2b403b94c45a8cb7e8a4edcd7c1": 1,
+        "3b2a9c8f606f493b8577f8cde29dbcc8": 3,
+        "13a69d8eaf7547fe87fba9c4e3022a65": 8,
+        "fb95bdea7e4c47178f8936f7bcf0994e": 2,
+        "42004dc776134802befb86a81beed9fb": 1,
+        "4af592fa01124315bada487b10cc1b10": 1,
+        "253c5f5940c34d20bde54f913654fdea": 2,
+        "7abee0fd1b5745d784cf8535da8a72a9": 4,
+        "db59c913f8424bc8aac9af25d2f325be": 1,
+        "d1d104de715246d8afa318346fd4a2ca": 2,
+        "92b99b5631a04834a2709c9d7d1cd282": 3
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "1u",
+          1,
+          "立式电容8X8MM",
+          "C6",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1u",
+          20,
+          "立式电容8X8MM",
+          "C7,C9,C10,C11,C17,C18,C19,C20,C21,C22,C23,C24,C25,C1,C2,C3,C4,C30,C31,C32",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1u",
+          1,
+          "立式电容8X8MM",
+          "C8",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          2,
+          "C0402",
+          "C12,C29",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          4,
+          "C0603",
+          "C16,C26,C27,C28",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "6.8uh",
+          1,
+          "0530一体成型贴片电感",
+          "L2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10uh",
+          1,
+          "1770一体成型",
+          "L3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "100k",
+          2,
+          "R0402",
+          "R1,R3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "25k",
+          1,
+          "R0402",
+          "R2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "4.7",
+          1,
+          "R0603",
+          "R6",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10k",
+          1,
+          "R0603",
+          "R7",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "72k",
+          1,
+          "R0603",
+          "R8",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "200k",
+          1,
+          "R0603",
+          "R10",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "13mR",
+          2,
+          "R2512",
+          "R9,R11",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "NDP2435KC",
+          1,
+          "SOP-8(小焊盘)",
+          "U4",
+          {
+            "Manufacturer Part": "NDP2435KC",
+            "Manufacturer": "NDP(芯潭微)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C7420593"
+          }
+        ],
+        [
+          "NDP1480QB",
+          1,
+          "QFN-20-NDP1460",
+          "U5",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "SMCJ33AQ",
+          2,
+          "SMC",
+          "D2,D3",
+          {
+            "Manufacturer Part": "SMCJ33AQ",
+            "Manufacturer": "YANGJIE(扬杰)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5861922"
+          }
+        ],
+        [
+          "LED-0603_R",
+          4,
+          "0603 贴片LED",
+          "LED1,LED2,LED3,LED4",
+          {
+            "Manufacturer Part": "19-217/R6C-AL1M2VY/3T",
+            "Manufacturer": "EVERLIGHT(台湾亿光)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C72044"
+          }
+        ],
+        [
+          "1k",
+          4,
+          "R0603",
+          "R4,R5,R12,R13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "AMS1086CD-3.3",
+          1,
+          "TO-252-2 小",
+          "U1",
+          {
+            "Manufacturer Part": "AMS1086CD-3.3",
+            "Manufacturer": "Advanced Monolithic Systems",
+            "Supplier": "LCSC",
+            "Supplier Part": "C14241"
+          }
+        ],
+        [
+          "0.1u",
+          2,
+          "C0805",
+          "C5,C13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          3,
+          "C1206",
+          "C14,C15,C33",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ]
+      ],
+      "updateTime": 1791354499,
+      "createTime": 1791332687,
+      "histories": [],
+      "created_at": "2026-10-07 08:24:47",
+      "updated_at": "2026-10-07 14:28:19"
+    }
+  ],
+  "sort": [],
+  "title": "环太平洋-接收机电源板",
+  "foldername": "环太平洋-接收机电源板",
+  "schfilename": "环太平洋-接收机电源板.json",
+  "schfilemtime": 1791332614088
+}

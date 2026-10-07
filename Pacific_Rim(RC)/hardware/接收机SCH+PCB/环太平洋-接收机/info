@@ -1,0 +1,758 @@
+{
+  "uuid": "bf40456c4b1c7090b8a2ca520eed58e2",
+  "path": "Offline/%E7%8E%AF%E5%A4%AA%E5%B9%B3%E6%B4%8B-%E6%8E%A5%E6%94%B6%E6%9C%BA",
+  "name": "环太平洋-接收机",
+  "content": "",
+  "created_at": "2026-10-05 23:35:08",
+  "updated_at": "2026-10-07 16:20:56",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "d274826c4f31ca64edf32c540920419e",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "24eeb2ceca08480b92b847b6a310acda": 57,
+        "a4eacdcb63554cb08b3b56477817ab57": 1,
+        "7f6d0efe5e811d00ba4310f7938d7c29": 1,
+        "b7cf74987e1a4b9b9dd2e74e56d6dd5a": 1,
+        "d6f3a4b0bba0432aa3507977687f7de3": 1,
+        "a8e5bcbf03054061b1e878ba107c5c95": 1,
+        "bb009484ef804a24ac5d18c54b249586": 27,
+        "3081ff2201614badb706b24c45e65cb6": 2,
+        "072609bc36ec4de9afa31342e50758fe": 2,
+        "07c257c32f2f40c2b3235ec661daba26": 2,
+        "e8428f3cf6054ff5aee3357336ba5cce": 4,
+        "4bf3d912b5cf42c3ba4d129b098c1665": 2,
+        "11131175aa064a939ef63a64806dd177": 8,
+        "efbb33bf4d40479f978e80b7983cf62b": 1,
+        "b955196158d24b938ff8cf00beb8376a": 7,
+        "7d19d6f006684f60afb0c218c16ed1d9": 1,
+        "85c9a23c1f684c08b805a5a124cbc2eb": 3,
+        "dac8e780a41c412e94fadb43a81d65bc": 2,
+        "7315cb623aa346cfbfafa78fd1098101": 2,
+        "5cbe824183374fac8e4c1ae848199ce3": 1,
+        "b38930ec9dad495da713d58c2c1114c1": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "12p",
+          2,
+          "C0402",
+          "C1,C2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          1,
+          "C0402",
+          "C3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1u",
+          54,
+          "C0402",
+          "C4,C5,C13,C14,C15,C16,C17,C18,C19,C20,C21,C22,C23,C24,C25,C26,C27,C28,C29,C30,C31,C32,C33,C34,C35,C36,C37,C38,C39,C40,C41,C42,C43,C44,C45,C46,C47,C48,C49,C50,C51,C52,C53,C54,C55,C56,C57,C58,C59,C60,C61,C62,C63,C65",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "47uF",
+          7,
+          "贴片电解-D6.3",
+          "C6,C7,C8,C9,C10,C11,C12",
+          {
+            "Manufacturer Part": "SM476M050E0800",
+            "Manufacturer": "SHENGYANG(升阳)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C44606723"
+          }
+        ],
+        [
+          "XH2.54-2PWT",
+          4,
+          "XH2.5-2P卧贴",
+          "CN1,CN2,CN3,CN4",
+          {
+            "Manufacturer Part": "XH2.54-2PWT",
+            "Manufacturer": "XUNPU(讯普)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C52037458"
+          }
+        ],
+        [
+          "USBLC6",
+          2,
+          "SOT-563",
+          "D1,D2",
+          {
+            "Manufacturer Part": "USBLC6-2P6-ES",
+            "Manufacturer": "ElecSuper(静芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5199178"
+          }
+        ],
+        [
+          "HDR-F-2.54_2x4",
+          1,
+          "HDR-F-2.54_2X4",
+          "H1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "LCSC",
+            "Supplier Part": "C239344"
+          }
+        ],
+        [
+          "2011-3X15G00RB",
+          1,
+          "HDR-TH_45P-P2.54-H-M-R3-C15-S2.54",
+          "H2",
+          {
+            "Manufacturer Part": "2011-3X15G00RB",
+            "Manufacturer": "WingTAT(格林柏)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C51953251"
+          }
+        ],
+        [
+          "1m",
+          1,
+          "L0402",
+          "L1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "LED-0603_R",
+          1,
+          "0603 贴片LED",
+          "LED1",
+          {
+            "Manufacturer Part": "19-217/R6C-AL1M2VY/3T",
+            "Manufacturer": "EVERLIGHT(台湾亿光)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C72044"
+          }
+        ],
+        [
+          "60",
+          4,
+          "R0805",
+          "R1,R6,R7,R15",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "800mR",
+          8,
+          "1206贴片电阻",
+          "R2,R3,R31,R32,R33,R34,R35,R36",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "5.1k",
+          4,
+          "R0402",
+          "R4,R5,R14,R16",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "100",
+          17,
+          "R0603",
+          "R8,R9,R10,R11,R17,R18,R19,R20,R21,R22,R23,R24,R25,R26,R27,R28,R29",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10k",
+          2,
+          "R0402",
+          "R12,R13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1k",
+          1,
+          "R0603",
+          "R30",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "CH32H417WEU6",
+          1,
+          "QFN-68_L8.0-W8.0-P0.40-TL-EP5.8",
+          "U1",
+          {
+            "Manufacturer Part": "CH32H417WEU6",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C52196060"
+          }
+        ],
+        [
+          "ICM-42670-L",
+          1,
+          "LGA-14_L3.0-W2.5-P0.50-TL",
+          "U2",
+          {
+            "Manufacturer Part": "ICM-42670-L",
+            "Manufacturer": "TDK InvenSense(应美盛)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C49073546"
+          }
+        ],
+        [
+          "PESD2CAN-ES",
+          2,
+          "SOT-23大焊盘",
+          "U3,U4",
+          {
+            "Manufacturer Part": "PESD2CAN-ES",
+            "Manufacturer": "ElecSuper(静芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5180299"
+          }
+        ],
+        [
+          "XL1057GT/3",
+          2,
+          "SOP-8(小焊盘)",
+          "U5,U7",
+          {
+            "Manufacturer Part": "XL1057GT/3",
+            "Manufacturer": "XINLUDA(信路达)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42379153"
+          }
+        ],
+        [
+          "DRV8870DDAR",
+          2,
+          "ESOP-8",
+          "U6,U8",
+          {
+            "Manufacturer Part": "DRV8870DDAR",
+            "Manufacturer": "TI(德州仪器)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C86590"
+          }
+        ],
+        [
+          "CH343P",
+          1,
+          "QFN-16(3X3)",
+          "U9",
+          {
+            "Manufacturer Part": "CH343P",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2846043"
+          }
+        ],
+        [
+          "ME6118A33B3G",
+          2,
+          "SOT-223",
+          "U10,U13",
+          {
+            "Manufacturer Part": "ME6118A33B3G",
+            "Manufacturer": "MICRONE(南京微盟)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C151063"
+          }
+        ],
+        [
+          "MX66100T",
+          3,
+          "SOT-23-6 小",
+          "U11,U12,U14",
+          {
+            "Manufacturer Part": "MX66100T",
+            "Manufacturer": "Wuxi Maxinmicro(无锡明芯微)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C53121238"
+          }
+        ],
+        [
+          "LCK-TCF833-L50WL-G1",
+          2,
+          "TYPE-C立贴（矮）",
+          "USB1,USB2",
+          {
+            "Manufacturer Part": "LCK-TCF833-L50WL-G1",
+            "Manufacturer": "LCKELEC(联晟欣)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C54950857"
+          }
+        ],
+        [
+          "25MHz",
+          1,
+          "X3225",
+          "X1",
+          {
+            "Manufacturer Part": "X322525MOB4SI",
+            "Manufacturer": "YXC(扬兴晶振)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C9006"
+          }
+        ]
+      ],
+      "updateTime": 1791243607,
+      "createTime": 1791214508,
+      "histories": [],
+      "created_at": "2026-10-05 23:35:08",
+      "updated_at": "2026-10-06 07:40:07"
+    },
+    {
+      "uuid": "4b75bc8e695a86344771b5acb97654fc",
+      "puuid": "bf40456c4b1c7090b8a2ca520eed58e2",
+      "title": "PCB_环太平洋-接收机",
+      "filename": "PCB_环太平洋-接收机.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "d1d597c567024a7989f929e42398b3fb": 4,
+        "17cebc86049941109816c67e8adf013c": 29,
+        "31ed58ef9e15436886218390490a87d8": 1,
+        "c7327eb7793a4cf58a3c887d4b8ffbf5": 1,
+        "3b2a9c8f606f493b8577f8cde29dbcc8": 8,
+        "7bbb72e351d547d0ad7796b6ecc4aff1": 1,
+        "253417f9c8d54cf0894ef378394641cc": 1,
+        "bfe3a7f8ace1441daed81036cc13d924": 2,
+        "50e93f6620c64924a20d3542121d20f9": 1,
+        "1eda4a18494f497291e4e99220795973": 2,
+        "2bd7e334c88f4454be81f271f98b3594": 4,
+        "9563249627664d5fa1838b8fdf9c72a5": 2,
+        "54e0c2acd3da49cd8b27fcd0a6686ff1": 1,
+        "f5182537515a49e4ab57707f68af5f17": 28,
+        "42004dc776134802befb86a81beed9fb": 2,
+        "ebf696146750456abeb8772ad4c94c1c": 7,
+        "a70189a532594eeca9d5c7e6e1e9afc7": 3,
+        "d576dcd89ed74ca9bd9ae03d99db7908": 1,
+        "7c958abcb1ab48298d4bd6a1cb4e45d5": 2,
+        "c5f636ebe82e4914b30f4749860239c5": 2,
+        "13a69d8eaf7547fe87fba9c4e3022a65": 16,
+        "7abee0fd1b5745d784cf8535da8a72a9": 1,
+        "35083a1f19e9407f8bc5c81dfe99009a": 8
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "60",
+          4,
+          "R0805",
+          "R1,R15,R6,R7",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "12p",
+          2,
+          "C0402",
+          "C1,C2",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "0.1u",
+          1,
+          "C0402",
+          "C3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "1u",
+          27,
+          "C0402",
+          "C4,C5,C13,C14,C15,C16,C19,C20,C21,C22,C23,C24,C38,C39,C30,C31,C32,C34,C35,C51,C52,C53,C54,C55,C56,C63,C64",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "HDR-F-2.54_2x4",
+          1,
+          "HDR-F-2.54_2X4",
+          "H1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "LCSC",
+            "Supplier Part": "C239344"
+          }
+        ],
+        [
+          "1m",
+          1,
+          "L0402",
+          "L1",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "5.1k",
+          4,
+          "R0402",
+          "R4,R5,R14,R16",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "10k",
+          2,
+          "R0402",
+          "R12,R13",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "CH32H417WEU6",
+          1,
+          "QFN-68_L8.0-W8.0-P0.40-TL-EP5.8",
+          "U1",
+          {
+            "Manufacturer Part": "CH32H417WEU6",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C52196060"
+          }
+        ],
+        [
+          "ICM-42670-L",
+          1,
+          "LGA-14_L3.0-W2.5-P0.50-TL",
+          "U2",
+          {
+            "Manufacturer Part": "ICM-42670-L",
+            "Manufacturer": "TDK InvenSense(应美盛)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C49073546"
+          }
+        ],
+        [
+          "LCK-TCF833-L50WL-G1",
+          2,
+          "TYPE-C立贴（矮）",
+          "USB1,USB2",
+          {
+            "Manufacturer Part": "LCK-TCF833-L50WL-G1",
+            "Manufacturer": "LCKELEC(联晟欣)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C54950857"
+          }
+        ],
+        [
+          "25MHz",
+          1,
+          "X3225",
+          "X1",
+          {
+            "Manufacturer Part": "X322525MOB4SI",
+            "Manufacturer": "YXC(扬兴晶振)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C9006"
+          }
+        ],
+        [
+          "PESD2CAN-ES",
+          2,
+          "SOT-23大焊盘",
+          "U3,U4",
+          {
+            "Manufacturer Part": "PESD2CAN-ES",
+            "Manufacturer": "ElecSuper(静芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5180299"
+          }
+        ],
+        [
+          "XH2.54-2PWT",
+          4,
+          "XH2.5-2P卧贴",
+          "CN1,CN2,CN4,CN3",
+          {
+            "Manufacturer Part": "XH2.54-2PWT",
+            "Manufacturer": "XUNPU(讯普)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C52037458"
+          }
+        ],
+        [
+          "DRV8870DDAR",
+          2,
+          "ESOP-8",
+          "U6,U8",
+          {
+            "Manufacturer Part": "DRV8870DDAR",
+            "Manufacturer": "TI(德州仪器)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C86590"
+          }
+        ],
+        [
+          "2011-3X15G00RB",
+          1,
+          "HDR-TH_45P-P2.54-H-M-R3-C15-S2.54",
+          "H2",
+          {
+            "Manufacturer Part": "2011-3X15G00RB",
+            "Manufacturer": "WingTAT(格林柏)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C51953251"
+          }
+        ],
+        [
+          "1u",
+          28,
+          "C0603",
+          "C17,C18,C33,C36,C37,C25,C26,C27,C28,C29,C40,C41,C42,C43,C44,C45,C46,C47,C48,C49,C50,C57,C58,C59,C60,C61,C62,C65",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "XL1057GT/3",
+          2,
+          "SOP-8(小焊盘)",
+          "U5,U7",
+          {
+            "Manufacturer Part": "XL1057GT/3",
+            "Manufacturer": "XINLUDA(信路达)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C42379153"
+          }
+        ],
+        [
+          "47uF",
+          7,
+          "贴片电解-D6.3",
+          "C6,C7,C8,C9,C10,C11,C12",
+          {
+            "Manufacturer Part": "SM476M050E0800",
+            "Manufacturer": "SHENGYANG(升阳)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C44606723"
+          }
+        ],
+        [
+          "100",
+          2,
+          "R0402",
+          "R10,R11",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "MX66100T",
+          3,
+          "SOT-23-6 小",
+          "U11,U12,U14",
+          {
+            "Manufacturer Part": "MX66100T",
+            "Manufacturer": "Wuxi Maxinmicro(无锡明芯微)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C53121238"
+          }
+        ],
+        [
+          "CH343P",
+          1,
+          "QFN-16(3X3)",
+          "U9",
+          {
+            "Manufacturer Part": "CH343P",
+            "Manufacturer": "WCH(南京沁恒)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C2846043"
+          }
+        ],
+        [
+          "ME6118A33B3G",
+          2,
+          "SOT-223",
+          "U10,U13",
+          {
+            "Manufacturer Part": "ME6118A33B3G",
+            "Manufacturer": "MICRONE(南京微盟)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C151063"
+          }
+        ],
+        [
+          "USBLC6",
+          2,
+          "SOT-563",
+          "D1,D2",
+          {
+            "Manufacturer Part": "USBLC6-2P6-ES",
+            "Manufacturer": "ElecSuper(静芯)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C5199178"
+          }
+        ],
+        [
+          "200mR",
+          2,
+          "R2512",
+          "R2,R3",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "100",
+          15,
+          "R0603",
+          "R8,R9,R17,R18,R19,R20,R21,R22,R23,R24,R25,R26,R27,R28,R29",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ],
+        [
+          "LED-0603_R",
+          1,
+          "0603 贴片LED",
+          "LED1",
+          {
+            "Manufacturer Part": "19-217/R6C-AL1M2VY/3T",
+            "Manufacturer": "EVERLIGHT(台湾亿光)",
+            "Supplier": "LCSC",
+            "Supplier Part": "C72044"
+          }
+        ],
+        [
+          "1k",
+          1,
+          "R0603",
+          "R30",
+          {
+            "Manufacturer Part": "",
+            "Manufacturer": "",
+            "Supplier": "",
+            "Supplier Part": ""
+          }
+        ]
+      ],
+      "updateTime": 1791361256,
+      "createTime": 1791214616,
+      "histories": [],
+      "created_at": "2026-10-05 23:36:56",
+      "updated_at": "2026-10-07 16:20:56"
+    }
+  ],
+  "sort": [],
+  "title": "环太平洋-接收机",
+  "foldername": "环太平洋-接收机",
+  "schfilename": "环太平洋-接收机.json",
+  "schfilemtime": 1791243607205
+}
